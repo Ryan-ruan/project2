@@ -1,0 +1,12 @@
+<h2>Users index</h2>
+
+<ul>
+  <% @users.each do |u| %>
+    <li>
+      <%= link_to u.name, user_path(u.id) %>
+      <% if u.is_admin %>
+      (admin)
+      <% end %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,11 @@
+<h2>Sign Up</h2>
+
+<% if @user.errors.any? %>
+<ol>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ol>
+<% end %>
+
+<%= render partial: 'form' %>
