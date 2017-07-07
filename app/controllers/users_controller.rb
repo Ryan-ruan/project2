@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+before_action :check_if_logged_in, only: [:edit, :update, :destroy]
+before_action :check_if_admin, only: [:index]
 before_action :get_user, only: [:show, :edit, :update]
 
   def get_user
@@ -35,6 +37,7 @@ before_action :get_user, only: [:show, :edit, :update]
   end
 
   def destroy
+    @user.destroy
   end
 
   private

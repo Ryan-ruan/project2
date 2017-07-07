@@ -1,12 +1,7 @@
-<h2>Users Index</h2>
 
 <ul>
-  <% @users.each do |u| %>
-    <li>
-      <%= link_to u.name, user_path(u.id) %>
-      <% if u.is_admin %>
-      (admin)
-      <% end %>
-    </li>
-  <% end %>
+    <li><%=  @user.name %></li>
+    <li> <%=  @user.email %></li>
+    <li> <%= image_tag @user.avatar %> </li>
+
 </ul>
