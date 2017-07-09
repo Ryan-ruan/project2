@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for @user,html:{multipart:true} do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -17,7 +17,7 @@
   <br>
 
   <%= f.label :avatar %>
-  <%= f.text_field :avatar %>
+  <%= f.cl_image_upload :avatar %>
   <br>
 
   <%= f.submit %>
