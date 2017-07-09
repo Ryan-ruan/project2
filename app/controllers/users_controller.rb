@@ -54,7 +54,7 @@ before_action :get_user, only: [:show, :edit, :update]
 
     if params[:file].present?
       req = Cloudinary::Uploader.upload params[:file]
-      @user.profile_image= req['public_id']
+      @user.avatar= req['public_id']
 
     end
     @user.update user_params
