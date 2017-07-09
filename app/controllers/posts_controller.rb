@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :check_if_logged_in, only: [:new, :create, :destroy]
 
   def new
+    @post = Post.new
   end
 
   def create
@@ -15,6 +16,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find params['id']
+    @comments = Comment.where(post_id: @post).order("created_at DESC")
   end
 
   def destroy
