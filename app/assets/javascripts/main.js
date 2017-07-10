@@ -36,7 +36,7 @@ $('body.posts.new').ready(function(){
   //   opacity: 0.85
   // });
   // canvas.add(imgInstance);
-  fabric.Image.fromURL('http://i.imgur.com/uBO2Not.png', function(oImg) {
+  fabric.Image.fromURL('asset2.png', function(oImg) {
     canvas.add(oImg);
   });
   // canvas.setHeight(480);
