@@ -74,17 +74,13 @@ $(document).ready(function(){
     $('#pre_take_buttons').show();
     $('#post_take_buttons').hide();
     $('#webcamjs').hide();
-    Webcam.reset();
+    Webcam.reset(); // shutdown the webcam
     $('#editor_ui').show();
   });
 
 
-  // ==========================
 
 
-  // $('#pencil').on('click', function() {
-  //   canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
-  // });
 
 
 }); // end of document ready
