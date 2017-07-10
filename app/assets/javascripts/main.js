@@ -1,6 +1,6 @@
 
 
-$(document).ready(function(){
+$('body.posts.new').ready(function(){
   console.log("all good");
 
   // initialize the canvas, get the context as '2d'
@@ -82,21 +82,9 @@ $(document).ready(function(){
   // ==========================
 
 
-<<<<<<< HEAD
-
-  var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
-    isDrawingMode: true
-  });
-
-
-  $('#pencil').on('click', function() {
-    canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
-  });
-=======
   // $('#pencil').on('click', function() {
   //   canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
   // });
->>>>>>> 768ed5327c03a39ad85767a8f2b8a4aed776a940
 
 
 }); // end of document ready
