@@ -1,9 +1,11 @@
-$(document).ready(function(){
+
+
+$('body.posts.new').ready(function(){
   console.log("all good");
 
   // initialize the canvas, get the context as '2d'
-  var $canvas = $('#my_canvas');
-  var myContext = $canvas[0].getContext('2d');
+  // var $canvas = $('#my_canvas');
+  // var myContext = $canvas[0].getContext('2d');
 
   // set up the camera.
   Webcam.set({
@@ -21,12 +23,25 @@ $(document).ready(function(){
   // attach the camera(live preview) onto a div '#my_camera'
   Webcam.attach( '#my_camera' );
 
+  var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
+    width: 640,
+    height: 480,
+    isDrawingMode: true
+  });
+  // canvas.setHeight(480);
+  // canvas.setWidth(640);
+
   // define a function to save the sanpshot onto a canvas we placed on html page
   function take_snap_canvas(){
-    Webcam.snap( function(data_uri, canvas, context){
-      myContext.drawImage( canvas, 0, 0 );
+    Webcam.snap( function(data_uri){
 
+      canvas.setBackgroundImage(data_uri, canvas.renderAll.bind(canvas));
 
+      // canvas.renderAll.bind(canvas);
+
+      console.log('canvas', canvas);
+      console.log('URI', data_uri.substr(0, 50));
+      console.log('---------------------------');
     });
   };
 
@@ -58,20 +73,18 @@ $(document).ready(function(){
 
     $('#pre_take_buttons').show();
     $('#post_take_buttons').hide();
+    $('#webcamjs').hide();
+    Webcam.reset();
+    $('#editor_ui').show();
   });
 
 
   // ==========================
 
 
-  var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
-    isDrawingMode: true
-  });
-
-
-  $('#pencil').on('click', function() {
-    canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
-  });
+  // $('#pencil').on('click', function() {
+  //   canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
+  // });
 
 
 }); // end of document ready
