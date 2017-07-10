@@ -64,6 +64,7 @@ $(document).ready(function(){
   // ==========================
 
 
+
   var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
     isDrawingMode: true
   });
