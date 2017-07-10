@@ -1,6 +1,6 @@
 
 
-$(document).ready(function(){
+$('body.posts.new').ready(function(){
   console.log("all good");
 
   // initialize the canvas, get the context as '2d'
