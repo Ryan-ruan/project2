@@ -26,7 +26,18 @@ $('body.posts.new').ready(function(){
   var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
     width: 640,
     height: 480,
-    isDrawingMode: true
+    // isDrawingMode: true
+  });
+  // var imgElement = $('#my-image');
+  // var imgInstance = new fabric.Image(imgElement, {
+  //   left: 100,
+  //   top: 100,
+  //   angle: 30,
+  //   opacity: 0.85
+  // });
+  // canvas.add(imgInstance);
+  fabric.Image.fromURL('http://i.imgur.com/uBO2Not.png', function(oImg) {
+    canvas.add(oImg);
   });
   // canvas.setHeight(480);
   // canvas.setWidth(640);
@@ -81,6 +92,15 @@ $('body.posts.new').ready(function(){
 
 
 
+<<<<<<< HEAD
+=======
+  // $('#pencil').on('click', function() {
+  //   canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
+  // });
+  $('.menu .item').tab()
+
+
+>>>>>>> 6ca3377e9d589e3173c41710fce63ad3768599c7
 
 
 }); // end of document ready
