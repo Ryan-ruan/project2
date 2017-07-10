@@ -24,6 +24,9 @@ before_action :get_user, only: [:show, :edit, :update]
 
   def create
     @user = User.new user_params
+    avatar = "https://api.adorable.io/avatars/200/#{@user.email}"
+    @user.avatar = avatar
+     #give new user a generated avatar
 
     if params[:file].present?
      # Then call Cloudinary's upload method, passing in the file in params
