@@ -1,7 +1,11 @@
 $(document).ready(function(){
-
   console.log("all good");
 
+  // initialize the canvas, get the context as '2d'
+  var $canvas = $('#my_canvas');
+  var myContext = $canvas[0].getContext('2d');
+
+  // set up the camera.
   Webcam.set({
   		width: 640,
   		height: 480,
@@ -11,26 +15,21 @@ $(document).ready(function(){
   		jpeg_quality: 90,
   		force_flash: false,
   		flip_horiz: true,
-      // unfreeze_snap: false,
   		fps: 45
   	});
 
-
+  // attach the camera(live preview) onto a div '#my_camera'
   Webcam.attach( '#my_camera' );
 
-
-  function take_snapshot() {
-		Webcam.snap( function(data_uri) {
-			document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
-		});
-	};
-
-  function take_sanp_canvas(){
-    Webcam.snap( function(){
-
-
-    }, $('#my_canvas'))
+  // define a function to save the sanpshot onto a canvas we placed on html page
+  function take_snap_canvas(){
+    Webcam.snap( function(data_uri, canvas, context){
+      myContext.drawImage( canvas, 0, 0 );
+    });
   };
+
+
+  // buttons for take snapshot, cancel pic preview and save the pic
 
   $('#pre_take_buttons button').on('click', function(){
     // freeze camera so user can preview pic
@@ -50,13 +49,14 @@ $(document).ready(function(){
     $('#post_take_buttons').hide();
   });
 
+
   $('#save').on('click',function() {
-    take_snapshot();
-    // take_sanp_canvas();
+    // take_snapshot();
+    take_snap_canvas();
 
     $('#pre_take_buttons').show();
     $('#post_take_buttons').hide();
   });
 
 
-});
+}); // end of document ready
