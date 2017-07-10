@@ -25,6 +25,8 @@ $(document).ready(function(){
   function take_snap_canvas(){
     Webcam.snap( function(data_uri, canvas, context){
       myContext.drawImage( canvas, 0, 0 );
+
+
     });
   };
 
@@ -56,6 +58,19 @@ $(document).ready(function(){
 
     $('#pre_take_buttons').show();
     $('#post_take_buttons').hide();
+  });
+
+
+  // ==========================
+
+
+  var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
+    isDrawingMode: true
+  });
+
+
+  $('#pencil').on('click', function() {
+    canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
   });
 
 

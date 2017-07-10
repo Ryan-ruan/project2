@@ -34,11 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'cloudinary'
-
 gem "bcrypt"
-
 gem 'rails_12factor'
-
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
 group :development, :test do
