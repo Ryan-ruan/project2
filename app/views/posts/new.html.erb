@@ -15,11 +15,15 @@
         <button class="ui teal button">Take Snapshot</button>
       </div>
 
-      <div id="post_take_buttons" style="display:none">
-        <button class="ui red button" id="cancel">Cancel Preview</button>
-        <button class="ui blue button" id="save">Save Photo</button>
-      </div>
+    <div id="pre_take_buttons">
+      <button class="ui teal button"><i class="photo icon"></i>Take Snapshot</button>
     </div>
+
+    <div id="post_take_buttons" style="display:none">
+      <button class="ui red button" id="cancel"><i class="remove icon"></i>Cancel Preview</button>
+      <button class="ui blue button" id="save"><i class="save icon"></i>Save Photo</button>
+    </div>
+
   </div>
 
 </div>
@@ -46,9 +50,9 @@
             <div class="ui grid">
               <div class="four wide column">
                 <div class="ui vertical icon menu">
-                  <a class="active item" data-tab="first"><i class="gamepad icon"></i></a>
+                  <a class="active item" data-tab="first"><i class="sticky note icon"></i></a>
                   <a class="item" data-tab="second" id="brush"><i class="paint brush icon"></i></a>
-                  <a class="item" data-tab="third"><i class="gamepad icon"></i></a>
+                  <a class="item" data-tab="third"><i class="text width icon"></i></a>
                 </div>
               </div>
               <div class="twelve wide stretched column">
@@ -73,22 +77,37 @@
                 <div class="ui tab segment" data-tab="second">
                   <h4>Brush</h4>
                   <br>
-                  <label for="drawing_line-width">Line width:</label>
-                  <span id="width-info" class="info"></span>
-                  <input type="range" value="150" min="0" max="150" id="drawing-line-width">
-                  <label for="drawing-color">Line color:</label>
-                  <br>
+                  <label for="drawing-color"> Color:</label>
                   <input type="color" value="#005E7A" id="drawing-line-color">
+                  <br>
+                  <br>
+                  <label for="drawing_line-width">Width:</label>
+                  <span id="width-info" class="info"></span>
+                  <br>
+                  <input type="range" value="50" min="0" max="100" id="drawing-line-width">
                 </div>
                 <!-- text tab -->
                 <div class="ui tab segment" data-tab="third">
                   <h4>Text</h4>
-                  <div id="text-params">
+                  <br>
+                  <label for="font-color">Color:</label>
+                  <input type="color" value="#005E7A" id="font-color">
+                  <br>
+                  <br>
+                  <label for="font-info">Size: </label>
+                  <span id="size-info" class="info"></span>
+                  <br>
+                  <input type="range" value="48" min="12" max="96" id="font-size">
+                  <button class="ui teal button">Add</button>
+
+
+                  <!-- <div id="text-params">
                     Color: <input id="font-colour" type="color" value="#F62459">
-                    fontSize:<span>48</span>
+                    FontSize:<span>48</span>
                     <input id="font-size" type="range" min="12" max="96" value="48" >
                     <button class="ui teal button">Add</button>
-                  </div>
+                  </div> -->
+
                 </div>
               </div>
             </div>
@@ -97,7 +116,7 @@
 
   </div>
 
-  <!-- Canvas View-->
+  <!-- ================Canvas View====================-->
   <div class="ui segment">
     <div class="eight wide column">
       <canvas id="my_canvas"></canvas>
