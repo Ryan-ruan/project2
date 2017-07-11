@@ -97,9 +97,8 @@ $(document).ready(function(){
       fabric.Image.fromURL(url, function(oImg) {
         oImg.scale(0.5);
         canvas.add(oImg);
-      });
+      }, { crossOrigin: 'Anonymous' });
 
-      canvas.add(imgInstance);
     });
 
     // ------------ text tab -- Lingxiao ------------
@@ -162,6 +161,24 @@ $(document).ready(function(){
       if ( $('#brush').hasClass('active') ){
         canvas.isDrawingMode = true;
       }
+
+    });
+
+    //======================Save to computer ==========================
+
+    $('#download').click(function() {
+      window.location = canvas.toDataURL("image/png");
+    }); // save the image to computer
+
+    //======================Upload to gallery ==========================
+
+
+    $('#new_post').submit(function () {
+
+      var dataurl = canvas.toDataURL('image/png');
+      $('#image').val( dataurl );
+
+      console.log('GOT HERE');
 
     });
 
