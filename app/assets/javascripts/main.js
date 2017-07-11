@@ -100,12 +100,28 @@ $('body.posts.new').ready(function(){
     $('#editor_ui').show();
   });
 
+
+  // switch between tabs
   $('.menu .item').tab()
 
+  // functions buttons
+  $("#Camera").on("click",function(){
+    $('#webcamjs').show();
+    Webcam.attach( '#my_camera' );
+    $('#editor_ui').hide();
+    });
 
 
-  // ========= add text ==========
+  // ---------- sticker tab - unicar -------------
+  $('#sticker1').on('click', function() {
+    fabric.Image.fromURL('http://i.imgur.com/OmwdQK3.png', function(oImg) {
+      canvas.add(oImg);
+    });
 
+    canvas.add(imgInstance);
+  });
+
+  // ------------ text tab -- Lingxiao ------------
   // set font color and size
   var fillColour = $('#font-colour').val();
   var fontSize = $('#font-size').val();
@@ -116,34 +132,21 @@ $('body.posts.new').ready(function(){
 
 
 
-  $("#Camera").on("click",function(){
-    $('#webcamjs').show();
-    Webcam.attach( '#my_camera' );
-    $('#editor_ui').hide();
-    });
 
-
-
-    $('#sticker1').on('click', function() {
-      fabric.Image.fromURL('http://i.imgur.com/OmwdQK3.png', function(oImg) {
-        canvas.add(oImg);
-      });
-
-      canvas.add(imgInstance);
-    });
-
-
-// ======= brushes editor -- jonathan ==========
+  // -------- brushes tab -- jonathan ----------
+  // set line width
   $('#drawing-line-width').on('change', function(){
     canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
-
     $('#width-info').text(this.value);
   })
 
+  // set line color
   $('#drawing-line-color').on('change', function(){
     canvas.freeDrawingBrush.color = this.value;
 
+
     $('#color-info').text(this.value);
+
   })
 
   $('#brush').on('click', function() {
