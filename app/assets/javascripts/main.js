@@ -31,30 +31,6 @@ $(document).ready(function(){
     height: 480,
     // isDrawingMode: true
   });
-  // var imgElement = $('#my-image');
-  // var imgInstance = new fabric.Image(imgElement, {
-  //   left: 100,
-  //   top: 100,
-  //   angle: 30,
-  //   opacity: 0.85
-  // });
-  // canvas.add(imgInstance);
-  fabric.Image.fromURL('asset2.png', function(oImg) {
-    canvas.add(oImg);
-  });
-  // var imgElement = $('#my-image');
-  // var imgInstance = new fabric.Image(imgElement, {
-  //   left: 100,
-  //   top: 100,
-  //   angle: 30,
-  //   opacity: 0.85
-  // });
-  // canvas.add(imgInstance);
-  // fabric.Image.fromURL('http://i.imgur.com/uBO2Not.png', function(oImg) {
-  //   canvas.add(oImg);
-  // });
-  // canvas.setHeight(480);
-  // canvas.setWidth(640);
 
   // define a function to save the sanpshot onto a canvas we placed on html page
   function take_snap_canvas(){
@@ -107,7 +83,7 @@ $(document).ready(function(){
   // switch between tabs
   $('.menu .item').tab()
 
-  // functions buttons
+  // ==============functions buttons - BACK TO CAMERA - ryan ============
   $("#Camera").on("click",function(){
     $('#webcamjs').show();
     Webcam.attach( '#my_camera' );
