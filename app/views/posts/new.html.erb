@@ -19,8 +19,64 @@
 
 <div class="ui two column centered grid" id="editor_ui" style="display:none">
 
+<<<<<<< HEAD
+  <div id="menu" class="ui ten column grid">
+    <div class="column">
+      <button class="ui button" id ='Clear'><i class="trash outline icon"></i>Clear </button>
+    </div>
+    <div class="column" id ='Save' >
+      <button class="ui button"><i class="save icon"></i>Save </button>
+    </div>
+    <div class="column" id ='upload' >
+      <button class="ui button"><i class="cloud upload icon"></i>upload</button>
+    </div>
+    <div class="column" id ='Camera'>
+      <button class="ui button"><i class="camera retro icon"></i>Camera</button>
+    </div>
+  </div>
+
+  <div id="functions">Pizza</div>
+  <!-- <div id="filter">
+    <div class="ui checkbox" >
+      <input type="checkbox" id='Grayscale'>
+      <label >Grayscale</label>
+    </div>
+  </div> -->
+  <canvas id="my_canvas"></canvas>
+
+  <div class="ui three column grid">
+    <div class="column">
+      <div class="ui two column grid">
+        <div class="column">
+          <div class="ui vertical icon menu">
+            <a class="active item" data-tab="first"><i class="gamepad icon"></i></a>
+            <a class="item" data-tab="second"><i class="gamepad icon"></i></a>
+            <a class="item" data-tab="third"><i class="gamepad icon"></i></a>
+          </div>
+        </div>
+        <div class="stretched column">
+          <div class="ui active tab segment" data-tab="first">
+            First
+          </div>
+          <div class="ui tab segment" data-tab="second">
+            Second
+          </div>
+          <div class="ui tab segment" data-tab="third">
+            Third
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="column"></div>
+      <div class="column"></div>
+    </div>
+
+
+
+=======
   <canvas id="my_canvas"></canvas>
   <!-- <img id="my-image" src="http://i.imgur.com/uBO2Not.png" alt=""> -->
+>>>>>>> c468bb7892b2da96d60051a53962d86ca4545b36
 </div>
 
   <div class="ui three column grid">
@@ -50,7 +106,19 @@
             </div>
           </div>
           <div class="ui tab segment" data-tab="third">
-            Third
+            <h4>Text</h4>
+            <div id="text-params">
+              Color: <input id="font-colour" type="color">
+              fontSize:<span>48</span>
+              <input id="font-size" type="range" min="12" max="96" value="48" >
+              <button class="ui teal button">Add</button>
+            </div>
+
+
+
+
+
+
           </div>
         </div>
         </div>

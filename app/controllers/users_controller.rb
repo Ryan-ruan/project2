@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-before_action :check_if_logged_in, only: [ :edit, :update, :destroy]
+before_action :check_if_logged_in, only: [:new, :edit, :update, :destroy]
 before_action :check_if_admin, only: [:index]
 before_action :get_user, only: [:show, :edit, :update]
 
@@ -16,9 +16,9 @@ before_action :get_user, only: [:show, :edit, :update]
   end
 
   def new
-    if @current_user.present?
-      redirect_to user_path(@current_user)
-    end
+    # if @current_user.present?
+    #   redirect_to user_path(@current_user)
+    # end
     @user = User.new
   end
 
