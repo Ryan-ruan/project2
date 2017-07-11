@@ -116,8 +116,10 @@ $(document).ready(function(){
 
 
   // ======== sticker tab - unicar ========
-  $('#sticker1').on('click', function() {
-    fabric.Image.fromURL('http://i.imgur.com/OmwdQK3.png', function(oImg) {
+  $('.ui.image').on('click', function() {
+    var url = $(this).attr('src');
+    fabric.Image.fromURL(url, function(oImg) {
+      oImg.scale(0.5);
       canvas.add(oImg);
     });
 
@@ -174,6 +176,6 @@ $(document).ready(function(){
     });
 
 
-  }
+  } // main.js will only execute on posts/new page
 
 }); // end of document ready
