@@ -3,16 +3,22 @@
 
 <div class="ui two column centered grid" id="webcamjs">
 
-  <div id="my_camera"></div>
+  <!-- div wrapp the camera live preview -->
+  <div class="column" id="my_camera"></div>
 
-  <div id="pre_take_buttons">
-    <button>Take Snapshot</button>
+  <div class="ui four column centered row">
+
+    <div id="pre_take_buttons">
+      <button class="ui teal button">Take Snapshot</button>
+    </div>
+
+    <div id="post_take_buttons" style="display:none">
+      <button class="ui red button" id="cancel">Cancel Preview</button>
+      <button class="ui blue button" id="save">Save Photo</button>
+    </div>
+
   </div>
 
-  <div id="post_take_buttons" style="display:none">
-    <button id="cancel">Cancel Preview</button>
-    <button id="save">Save Photo</button>
-  </div>
 
 </div>
 <!-- closing #webcamjs -->
