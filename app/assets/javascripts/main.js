@@ -143,7 +143,7 @@ $('body.posts.new').ready(function(){
   $('#drawing-line-color').on('change', function(){
     canvas.freeDrawingBrush.color = this.value;
 
-    $('#width-info').text(this.value);
+    $('#color-info').text(this.value);
   })
 
   $('#brush').on('click', function() {
