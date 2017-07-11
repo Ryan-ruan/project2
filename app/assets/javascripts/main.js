@@ -73,6 +73,22 @@ $(document).ready(function(){
 
   // buttons for take snapshot, cancel pic preview and save the pic
 
+  var selectedClass = 'basic';
+
+  var filters = {};
+
+  var applyFilters = function (filters, id) {
+    var $elem = $(id);
+    for(var key in filters){
+      var val = filters[key];
+      var css_val = '';
+      if(val.length){
+        var css_val = key + '(' + val + ')';
+      }
+      $elem.css('filter', css_val);
+    }
+  }
+
   $('#pre_take_buttons button').on('click', function(){
     // freeze camera so user can preview pic
 		Webcam.freeze();
@@ -81,6 +97,101 @@ $(document).ready(function(){
     $('#pre_take_buttons').hide();
     $('#post_take_buttons').show();
   });
+
+
+
+  $('#filters_button button').on('click', function(){
+    // display filters_button
+
+    // swap button sets
+    $('#filters_button').hide();
+    $('.filters_buttons').show();
+  });
+
+  $('#Reset').on('click', function(){
+  });
+  $('#Blur').on('click', function(){
+    $(this).toggleClass(selectedClass);
+
+    if( $(this).hasClass(selectedClass) ){
+      console.log('off');
+      $("#my_camera").css("filter", "");
+      filters.blur = '';
+    } else {
+      console.log('on');
+      $("#my_camera").css("filter", "blur(3px)");
+      filters.blur = "3px";
+    }
+    applyFilters(filters, "#my_camera");
+
+  });
+
+
+  $('#BnW').on('click', function(){
+
+    $(this).toggleClass(selectedClass);
+
+    if( $(this).hasClass(selectedClass) ){
+      console.log('off');
+      $("#my_camera").css("filter", "");
+      filters.grayscale = '';
+    } else {
+      console.log('on');
+      $("#my_camera").css("filter", "grayscale(100%)");
+      filters.grayscale = "100%";
+    }
+    applyFilters(filters, "#my_camera");
+  });
+  //
+  // $('#Bright').on('click', function(){
+  //
+  //       $(this).toggleClass(selectedClass);
+  //
+  //       if( $(this).hasClass(selectedClass) ){
+  //         console.log('off');
+  //         $("#my_camera").css("filter", "");
+  //         filters.brightness = '';
+  //       } else {
+  //         console.log('on');
+  //         $("#my_camera").css("filter", "brightness(300%)");
+  //         filters.brightness = "300%";
+  //       }
+  //       applyFilters(filters, "#my_camera");
+  // });
+
+//   $('#Hue').on('click', function(){
+//     $(this).toggleClass(selectedClass);
+//
+//     if( $(this).hasClass(selectedClass) ){
+//       console.log('off');
+//       $("#my_camera").css("filter", "");
+//       filters.hue = '';
+//     } else {
+//       console.log('on');
+//       $("#my_camera").css("filter", "hue-rotate(90deg)");
+//       filters.hue = "300%";
+//     }
+//     applyFilters(filters, "#my_camera");
+// });
+
+  // });
+  $('#Invent').on('click', function(){
+    $("#my_camera").css({"filter":"grayscale(100%)"});
+
+  });
+  $('#Sepia').on('click', function(){
+    $("#my_camera").css({"filter":"grayscale(100%)"});
+
+  });
+  $('#Contrast').on('click', function(){
+    $("#my_camera").css({"filter":"grayscale(100%)"});
+
+  });
+
+
+
+
+
 
   $('#cancel').on('click', function() {
     // cancel preview freeze and return to live camera feed
@@ -139,7 +250,7 @@ $(document).ready(function(){
   // ======= brushes tab -- jonathan ==========
   // set line width
   $('#drawing-line-width').on('change', function(){
-    canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
+    canvas.freeDrawingBrush.width = parseInt(this.value,10) || 1;
     $('#width-info').text(this.value);
   })
 
