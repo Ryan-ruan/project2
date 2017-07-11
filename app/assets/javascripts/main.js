@@ -37,17 +37,129 @@ $(document).ready(function(){
       Webcam.snap( function(data_uri){
 
         canvas.setBackgroundImage(data_uri, canvas.renderAll.bind(canvas));
+      });
+    }
 
         // canvas.renderAll.bind(canvas);
 
-        console.log('canvas', canvas);
-        console.log('URI', data_uri.substr(0, 50));
-        console.log('---------------------------');
-      });
-    };
+  var selectedClass = 'basic';
+
+  var filters = {};
+
+  var applyFilters = function (filters, id) {
+    var $elem = $(id);
+    for(var key in filters){
+      var val = filters[key];
+      var css_val = '';
+      if(val.length){
+        var css_val = key + '(' + val + ')';
+      }
+      $elem.css('filter', css_val);
+    }
+  }
 
 
-    // buttons for take snapshot, cancel pic preview and save the pic
+
+
+
+
+  $('#filters_button button').on('click', function(){
+    // display filters_button
+
+    // swap button sets
+    $('#filters_button').hide();
+    $('.filters_buttons').show();
+  });
+
+  $('#Reset').on('click', function(){
+  });
+
+  $('#Blur').on('click', function(){
+    $(this).toggleClass(selectedClass);
+
+    if( $(this).hasClass(selectedClass) ){
+      console.log('off');
+      $("#my_camera").css("filter", "");
+      filters.blur = '';
+    } else {
+      console.log('on');
+      $("#my_camera").css("filter", "blur(3px)");
+      filters.blur = "3px";
+    }
+    applyFilters(filters, "#my_camera");
+
+  });
+
+
+  $('#BnW').on('click', function(){
+
+    $(this).toggleClass(selectedClass);
+
+    if( $(this).hasClass(selectedClass) ){
+      console.log('off');
+      $("#my_camera").css("filter", "");
+      filters.grayscale = '';
+    } else {
+      console.log('on');
+      $("#my_camera").css("filter", "grayscale(100%)");
+      filters.grayscale = "100%";
+    }
+    applyFilters(filters, "#my_camera");
+  });
+  //
+  // $('#Bright').on('click', function(){
+  //
+  //       $(this).toggleClass(selectedClass);
+  //
+  //       if( $(this).hasClass(selectedClass) ){
+  //         console.log('off');
+  //         $("#my_camera").css("filter", "");
+  //         filters.brightness = '';
+  //       } else {
+  //         console.log('on');
+  //         $("#my_camera").css("filter", "brightness(300%)");
+  //         filters.brightness = "300%";
+  //       }
+  //       applyFilters(filters, "#my_camera");
+  // });
+
+//   $('#Hue').on('click', function(){
+//     $(this).toggleClass(selectedClass);
+//
+//     if( $(this).hasClass(selectedClass) ){
+//       console.log('off');
+//       $("#my_camera").css("filter", "");
+//       filters.hue = '';
+//     } else {
+//       console.log('on');
+//       $("#my_camera").css("filter", "hue-rotate(90deg)");
+//       filters.hue = "300%";
+//     }
+//     applyFilters(filters, "#my_camera");
+// });
+
+  // });
+  $('#Invent').on('click', function(){
+    $("#my_camera").css({"filter":"grayscale(100%)"});
+
+  });
+
+  $('#Sepia').on('click', function(){
+    $("#my_camera").css({"filter":"grayscale(100%)"});
+
+  })
+
+  $('#Contrast').on('click', function(){
+    $("#my_camera").css({"filter":"grayscale(100%)"});
+
+  });
+
+
+
+
+
+
+
 
     $('#pre_take_buttons button').on('click', function(){
       // freeze camera so user can preview pic
@@ -81,7 +193,7 @@ $(document).ready(function(){
 
 
     // switch between tabs
-    $('.menu .item').tab()
+    $('.menu .item').tab();
 
     // ==============functions buttons - BACK TO CAMERA - ryan ============
     $("#Camera").on("click",function(){
