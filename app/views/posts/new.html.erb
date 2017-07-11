@@ -20,14 +20,27 @@
       </div>
     </div>
   </div>
-</div>
-
-
-  <!-- closing #webcamjs -->
+<!-- =========================== Webcam UI================================================ -->
 
 
 
-<!-- ===========================Webcam UI================================================ -->
+
+
+
+
+  <!-- function buttons -->
+  <div id="menu" class="ui ten column grid">
+    <div class="column">
+      <button class="ui button" id ='Clear'><i class="trash outline icon"></i>Clear </button>
+    </div>
+    <div class="column" id ='download' >
+      <button class="ui button"><i class="save icon"></i>Download </button>
+    </div>
+    <div class="column" id ='upload' >
+      <button class="ui button"><i class="cloud upload icon"></i>upload</button>
+    </div>
+    <div class="column" id ='Camera'></div>
+
 
 <div class="ui grid" id="editor_ui" style="display:none">
   <!-- function buttons view -->
@@ -41,8 +54,11 @@
   </div>
 
 
-  <!-- Vertical Tabs View -->
+  <!-- canvas -->
+  <canvas id="my_canvas"></canvas>
+  <!-- canvas -->
 
+  <!-- Vertical Tabs View -->
   <div class="four wide column">
 
           <div class="column">
@@ -54,7 +70,7 @@
                   <a class="item" data-tab="third"><i class="gamepad icon"></i></a>
                 </div>
               </div>
-              <div class="twelve wide stretched column">
+              <div id="toolbar" class="twelve wide stretched column">
                 <!-- stikcer tab -->
                 <div class="ui active tab segment" data-tab="first">
                   <div class="ui mini bordered circular images">
@@ -97,9 +113,11 @@
   </div>
 
   <!-- Canvas View-->
-  <div class="eight wide column">
-    <canvas id="my_canvas"></canvas>
-    <!-- canvas -->
+  <div class="ui segment">
+    <div class="eight wide column">
+      <canvas id="my_canvas"></canvas>
+      <!-- canvas -->
+    </div>
   </div>
 
   <div class="four wide column"></div>
