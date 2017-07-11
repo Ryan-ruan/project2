@@ -96,7 +96,7 @@ $('body.posts.new').ready(function(){
     $('#pre_take_buttons').show();
     $('#post_take_buttons').hide();
     $('#webcamjs').hide();
-    Webcam.reset(); // shutdown the webcam
+    Webcam.reset();
     $('#editor_ui').show();
   });
 
@@ -114,27 +114,6 @@ $('body.posts.new').ready(function(){
     fillColour = $(this).val();
   });
 
-  $('#font-size').on('change', function(){
-    fontSize = $(this).val();
-    $('#text-params span').text(fontSize);
-  });
-
-  // click add button
-  $('#text-params button').on('click', function(evt){
-
-    var text = new fabric.IText('Type text here', {
-      width: 300,
-      top: 5,
-      left: 5,
-      fontSize: fontSize,
-      textAlign: 'center',
-      fixedWidth: 150,
-      fill: fillColour,
-      fontFamily: 'Avenir'
-    });
-
-    canvas.add(text);
-  });
 
 
   $("#Camera").on("click",function(){
