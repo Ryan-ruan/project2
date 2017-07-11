@@ -39,6 +39,17 @@ $('body.posts.new').ready(function(){
   fabric.Image.fromURL('asset2.png', function(oImg) {
     canvas.add(oImg);
   });
+  // var imgElement = $('#my-image');
+  // var imgInstance = new fabric.Image(imgElement, {
+  //   left: 100,
+  //   top: 100,
+  //   angle: 30,
+  //   opacity: 0.85
+  // });
+  // canvas.add(imgInstance);
+  // fabric.Image.fromURL('http://i.imgur.com/uBO2Not.png', function(oImg) {
+  //   canvas.add(oImg);
+  // });
   // canvas.setHeight(480);
   // canvas.setWidth(640);
 
@@ -85,19 +96,65 @@ $('body.posts.new').ready(function(){
     $('#pre_take_buttons').show();
     $('#post_take_buttons').hide();
     $('#webcamjs').hide();
-    Webcam.reset();
+    Webcam.reset(); // shutdown the webcam
     $('#editor_ui').show();
   });
 
+  $('.menu .item').tab()
 
-  // ==========================
 
 
-  // $('#pencil').on('click', function() {
-  //   canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
-  // });
-  $('.menu .item').tab();
+  // ========= add text ==========
 
+  // set font color and size
+  var fillColour = $('#font-colour').val();
+  var fontSize = $('#font-size').val();
+
+  $('#font-colour').on('change', function(){
+    fillColour = $(this).val();
+  });
+
+  $('#font-size').on('change', function(){
+    fontSize = $(this).val();
+    $('#text-params span').text(fontSize);
+  });
+
+  // click add button
+  $('#text-params button').on('click', function(evt){
+
+    var text = new fabric.IText('Type text here', {
+      width: 300,
+      top: 5,
+      left: 5,
+      fontSize: fontSize,
+      textAlign: 'center',
+      fixedWidth: 150,
+      fill: fillColour,
+      fontFamily: 'Avenir'
+    });
+
+    canvas.add(text);
+  });
+
+
+  $("#Camera").on("click",function(){
+    $('#webcamjs').show();
+    Webcam.attach( '#my_camera' );
+    $('#editor_ui').hide();
+    });
+
+
+
+    $('#sticker1').on('click', function() {
+      fabric.Image.fromURL('http://i.imgur.com/OmwdQK3.png', function(oImg) {
+        canvas.add(oImg);
+      });
+
+      canvas.add(imgInstance);
+    });
+
+
+// ======= brushes editor -- jonathan ==========
   $('#drawing-line-width').on('change', function(){
     canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
 
