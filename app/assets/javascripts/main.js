@@ -27,8 +27,6 @@ $('body.posts.new').ready(function(){
     width: 640,
     height: 480,
     // isDrawingMode: true
-<<<<<<< HEAD
-=======
   });
   // var imgElement = $('#my-image');
   // var imgInstance = new fabric.Image(imgElement, {
@@ -40,7 +38,6 @@ $('body.posts.new').ready(function(){
   // canvas.add(imgInstance);
   fabric.Image.fromURL('asset2.png', function(oImg) {
     canvas.add(oImg);
->>>>>>> c468bb7892b2da96d60051a53962d86ca4545b36
   });
   // var imgElement = $('#my-image');
   // var imgInstance = new fabric.Image(imgElement, {
@@ -99,46 +96,20 @@ $('body.posts.new').ready(function(){
     $('#pre_take_buttons').show();
     $('#post_take_buttons').hide();
     $('#webcamjs').hide();
-    Webcam.reset(); // shutdown the webcam
+    Webcam.reset();
     $('#editor_ui').show();
   });
 
+
+  // ==========================
+
+
+  // $('#pencil').on('click', function() {
+  //   canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
+  // });
   $('.menu .item').tab()
 
-  // ========= add text ==========
 
-  // set font color and size
-  var fillColour = $('#font-colour').val();
-  var fontSize = $('#font-size').val();
-
-  $('#font-colour').on('change', function(){
-    fillColour = $(this).val();
-  });
-
-  $('#font-size').on('change', function(){
-    fontSize = $(this).val();
-    $('#text-params span').text(fontSize);
-  });
-
-  // click add button
-  $('#text-params button').on('click', function(evt){
-
-    var text = new fabric.IText('Type text here', {
-      width: 300,
-      top: 5,
-      left: 5,
-      fontSize: fontSize,
-      textAlign: 'center',
-      fixedWidth: 150,
-      fill: fillColour,
-      fontFamily: 'Avenir'
-    });
-
-    canvas.add(text);
-  });
-
-
-<<<<<<< HEAD
   $("#Camera").on("click",function(){
     $('#webcamjs').show();
     Webcam.attach( '#my_camera' );
@@ -146,8 +117,6 @@ $('body.posts.new').ready(function(){
     });
 
 
-=======
->>>>>>> c468bb7892b2da96d60051a53962d86ca4545b36
 
 
 }); // end of document ready
