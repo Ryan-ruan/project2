@@ -108,16 +108,21 @@ $(document).ready(function(){
     var fontSize = $('#font-size').val();
 
     $('#font-colour').on('change', function(){
-      fontColour = $(this).val();
+      fontColour = this.value;
     });
 
-    $('#text-params button').on('click', function(evt){
+    $('#font-size').on('change', function(){
+      debugger;
+      fontSize = $(this).val();
+      $('#size-info').text(fontSize);
+    });
 
+    $('#add-text').on('click', function(){
       var text = new fabric.IText('Type text here', {
         width: 300,
         top: 240,
         left: 80,
-        fontSize: fontSize,
+        fontSize: parseInt(fontSize),
         textAlign: 'center',
         fixedWidth: 150,
         fill: fontColour,
