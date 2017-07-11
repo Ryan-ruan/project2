@@ -89,18 +89,10 @@ $('body.posts.new').ready(function(){
     $('#editor_ui').show();
   });
 
-
-
-
-<<<<<<< HEAD
-=======
-  // $('#pencil').on('click', function() {
-  //   canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
-  // });
   $('.menu .item').tab()
 
 
->>>>>>> 6ca3377e9d589e3173c41710fce63ad3768599c7
+
 
 
 }); // end of document ready
