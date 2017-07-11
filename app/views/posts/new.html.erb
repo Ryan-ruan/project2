@@ -15,11 +15,13 @@
   </div>
 
 </div>
+<!-- closing #webcamjs -->
 
 
 <div class="ui two column centered grid" id="editor_ui" style="display:none">
 
-<<<<<<< HEAD
+
+  <!-- function buttons -->
   <div id="menu" class="ui ten column grid">
     <div class="column">
       <button class="ui button" id ='Clear'><i class="trash outline icon"></i>Clear </button>
@@ -35,57 +37,10 @@
     </div>
   </div>
 
-  <div id="functions">Pizza</div>
-  <!-- <div id="filter">
-    <div class="ui checkbox" >
-      <input type="checkbox" id='Grayscale'>
-      <label >Grayscale</label>
-    </div>
-  </div> -->
+
+  <!-- canvas -->
   <canvas id="my_canvas"></canvas>
-
-  <div class="ui three column grid">
-    <div class="column">
-      <div class="ui two column grid">
-        <div class="column">
-          <div class="ui vertical icon menu">
-            <a class="active item" data-tab="first" id="brush"><i class="gamepad icon"></i>
-            </a>
-            <a class="item" data-tab="second"><i class="gamepad icon"></i></a>
-            <a class="item" data-tab="third"><i class="gamepad icon"></i></a>
-          </div>
-        </div>
-        <div class="stretched column">
-          <div class="ui active tab segment" data-tab="first">
-            Brush
-            <br>
-            <label for="drawing_line-width">Line width:</label>
-            <span id="width-info" class="info"></span>
-            <input type="range" value="150" min="0" max="150" id="drawing-line-width">
-            <label for="drawing-color">Line color:</label>
-            <br>
-            <input type="color" value="#005E7A" id="drawing-line-color">
-          </div>
-          <div class="ui tab segment" data-tab="second">
-            Second
-          </div>
-          <div class="ui tab segment" data-tab="third">
-            Third
-          </div>
-        </div>
-        </div>
-      </div>
-      <div class="column"></div>
-      <div class="column"></div>
-    </div>
-
-
-
-=======
-  <canvas id="my_canvas"></canvas>
-  <!-- <img id="my-image" src="http://i.imgur.com/uBO2Not.png" alt=""> -->
->>>>>>> c468bb7892b2da96d60051a53962d86ca4545b36
-</div>
+  <!-- canvas -->
 
   <div class="ui three column grid">
     <div class="column">
@@ -93,15 +48,13 @@
         <div class="column">
           <div class="ui vertical icon menu">
             <a class="active item" data-tab="first"><i class="gamepad icon"></i></a>
-            <a class="item" data-tab="second"><i class="gamepad icon"></i></a>
+            <a class="item" data-tab="second" id="brush"><i class="gamepad icon"></i></a>
             <a class="item" data-tab="third"><i class="gamepad icon"></i></a>
           </div>
         </div>
         <div class="stretched column">
+          <!-- stikcer tab -->
           <div class="ui active tab segment" data-tab="first">
-            First
-          </div>
-          <div class="ui tab segment" data-tab="second">
             <div class="ui mini bordered circular images">
               <img id="sticker1" class="ui image" src="http://i.imgur.com/OmwdQK3.png">
               <img id="sticker2" class="ui image" src="http://i.imgur.com/OmwdQK3.png">
@@ -113,6 +66,18 @@
               <img id="sticker8" class="ui image" src="http://i.imgur.com/OmwdQK3.png">
             </div>
           </div>
+          <!-- brush tab -->
+          <div class="ui tab segment" data-tab="second">
+            <h4>Brush</h4>
+            <br>
+            <label for="drawing_line-width">Line width:</label>
+            <span id="width-info" class="info"></span>
+            <input type="range" value="150" min="0" max="150" id="drawing-line-width">
+            <label for="drawing-color">Line color:</label>
+            <br>
+            <input type="color" value="#005E7A" id="drawing-line-color">
+          </div>
+          <!-- text tab -->
           <div class="ui tab segment" data-tab="third">
             <h4>Text</h4>
             <div id="text-params">
@@ -121,16 +86,13 @@
               <input id="font-size" type="range" min="12" max="96" value="48" >
               <button class="ui teal button">Add</button>
             </div>
-
-
-
-
-
-
           </div>
         </div>
-        </div>
       </div>
-      <div class="column"></div>
-      <div class="column"></div>
     </div>
+    <div class="column"></div>
+    <div class="column"></div>
+  </div>
+
+</div>
+<!-- closing #editor_ui -->
