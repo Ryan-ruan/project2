@@ -99,6 +99,17 @@ $('body.posts.new').ready(function(){
   $('.menu .item').tab()
 
 
+    $('#sticker1').on('click', function() {
+      fabric.Image.fromURL('http://i.imgur.com/OmwdQK3.png', function(oImg) {
+        canvas.add(oImg);
+      });
+
+      canvas.add(imgInstance);
+    });
+
+
+
+
 
 
 }); // end of document ready
