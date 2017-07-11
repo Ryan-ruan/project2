@@ -6,154 +6,165 @@ $(document).ready(function(){
 
   if( $('body.posts.new').length ){
 
-  // initialize the canvas, get the context as '2d'
-  // var $canvas = $('#my_canvas');
-  // var myContext = $canvas[0].getContext('2d');
+    // initialize the canvas, get the context as '2d'
+    // var $canvas = $('#my_canvas');
+    // var myContext = $canvas[0].getContext('2d');
 
-  // set up the camera.
-  Webcam.set({
-  		width: 640,
-  		height: 480,
-  		dest_width: 640,
-  		dest_height: 480,
-  		image_format: 'jpeg',
-  		jpeg_quality: 90,
-  		force_flash: false,
-  		flip_horiz: true,
-  		fps: 45
-  	});
+    // set up the camera.
+    Webcam.set({
+    		width: 640,
+    		height: 480,
+    		dest_width: 640,
+    		dest_height: 480,
+    		image_format: 'jpeg',
+    		jpeg_quality: 90,
+    		force_flash: false,
+    		flip_horiz: true,
+    		fps: 45
+    	});
 
-  // attach the camera(live preview) onto a div '#my_camera'
-  Webcam.attach( '#my_camera' );
-
-  var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
-    width: 640,
-    height: 480,
-    // isDrawingMode: true
-  });
-
-  // define a function to save the sanpshot onto a canvas we placed on html page
-  function take_snap_canvas(){
-    Webcam.snap( function(data_uri){
-
-      canvas.setBackgroundImage(data_uri, canvas.renderAll.bind(canvas));
-
-      // canvas.renderAll.bind(canvas);
-
-      console.log('canvas', canvas);
-      console.log('URI', data_uri.substr(0, 50));
-      console.log('---------------------------');
-    });
-  };
-
-
-  // buttons for take snapshot, cancel pic preview and save the pic
-
-  $('#pre_take_buttons button').on('click', function(){
-    // freeze camera so user can preview pic
-		Webcam.freeze();
-
-    // swap button sets
-    $('#pre_take_buttons').hide();
-    $('#post_take_buttons').show();
-  });
-
-  $('#cancel').on('click', function() {
-    // cancel preview freeze and return to live camera feed
-		Webcam.unfreeze();
-
-		// swap buttons back
-    $('#pre_take_buttons').show();
-    $('#post_take_buttons').hide();
-  });
-
-
-  $('#save').on('click',function() {
-    // take_snapshot();
-    take_snap_canvas();
-
-    $('#pre_take_buttons').show();
-    $('#post_take_buttons').hide();
-    $('#webcamjs').hide();
-    Webcam.reset();
-    $('#editor_ui').show();
-  });
-
-
-  // switch between tabs
-  $('.menu .item').tab()
-
-  // ==============functions buttons - BACK TO CAMERA - ryan ============
-  $("#Camera").on("click",function(){
-    $('#webcamjs').show();
+    // attach the camera(live preview) onto a div '#my_camera'
     Webcam.attach( '#my_camera' );
-    $('#editor_ui').hide();
+
+    var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
+      width: 640,
+      height: 480,
+      // isDrawingMode: true
+    });
+
+    // define a function to save the sanpshot onto a canvas we placed on html page
+    function take_snap_canvas(){
+      Webcam.snap( function(data_uri){
+
+        canvas.setBackgroundImage(data_uri, canvas.renderAll.bind(canvas));
+
+        // canvas.renderAll.bind(canvas);
+
+        console.log('canvas', canvas);
+        console.log('URI', data_uri.substr(0, 50));
+        console.log('---------------------------');
+      });
+    };
+
+
+    // buttons for take snapshot, cancel pic preview and save the pic
+
+    $('#pre_take_buttons button').on('click', function(){
+      // freeze camera so user can preview pic
+  		Webcam.freeze();
+
+      // swap button sets
+      $('#pre_take_buttons').hide();
+      $('#post_take_buttons').show();
+    });
+
+    $('#cancel').on('click', function() {
+      // cancel preview freeze and return to live camera feed
+  		Webcam.unfreeze();
+
+  		// swap buttons back
+      $('#pre_take_buttons').show();
+      $('#post_take_buttons').hide();
     });
 
 
-  // ======== sticker tab - unicar ========
-  $('.ui.image').on('click', function() {
-    var url = $(this).attr('src');
-    fabric.Image.fromURL(url, function(oImg) {
-      oImg.scale(0.5);
-      canvas.add(oImg);
+    $('#save').on('click',function() {
+      // take_snapshot();
+      take_snap_canvas();
+
+      $('#pre_take_buttons').show();
+      $('#post_take_buttons').hide();
+      $('#webcamjs').hide();
+      Webcam.reset();
+      $('#editor_ui').show();
     });
 
-    canvas.add(imgInstance);
-  });
 
-  // ------------ text tab -- Lingxiao ------------
-  // set font color and size
-  var fontColour = $('#font-colour').val();
-  var fontSize = $('#font-size').val();
+    // switch between tabs
+    $('.menu .item').tab()
 
-  $('#font-colour').on('change', function(){
-    fontColour = $(this).val();
-  });
+    // ==============functions buttons - BACK TO CAMERA - ryan ============
+    $("#Camera").on("click",function(){
+      $('#webcamjs').show();
+      Webcam.attach( '#my_camera' );
+      $('#editor_ui').hide();
+      });
 
-  $('#text-params button').on('click', function(evt){
 
-    var text = new fabric.IText('Type text here', {
-      width: 300,
-      top: 240,
-      left: 80,
-      fontSize: fontSize,
-      textAlign: 'center',
-      fixedWidth: 150,
-      fill: fontColour,
-      fontFamily: 'Avenir'
+    // ======== sticker tab - unicar ========
+    $('.ui.image').on('click', function() {
+      var url = $(this).attr('src');
+      fabric.Image.fromURL(url, function(oImg) {
+        oImg.scale(0.5);
+        canvas.add(oImg);
+      });
+
+      canvas.add(imgInstance);
     });
 
-    canvas.add(text);
-  });
+    // ------------ text tab -- Lingxiao ------------
+    // set font color and size
+    var fontColour = $('#font-colour').val();
+    var fontSize = $('#font-size').val();
+
+    $('#font-colour').on('change', function(){
+      fontColour = $(this).val();
+    });
+
+    $('#text-params button').on('click', function(evt){
+
+      var text = new fabric.IText('Type text here', {
+        width: 300,
+        top: 240,
+        left: 80,
+        fontSize: fontSize,
+        textAlign: 'center',
+        fixedWidth: 150,
+        fill: fontColour,
+        fontFamily: 'Avenir'
+      });
+
+      canvas.add(text);
+    });
 
 
 
 
-  // -------- brushes tab -- jonathan ----------
-  // set line width
-  $('#drawing-line-width').on('change', function(){
-    canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
-    $('#width-info').text(this.value);
-  })
+    // -------- brushes tab -- jonathan ----------
+    // set line width
+    $('#drawing-line-width').on('change', function(){
+      canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
+      $('#width-info').text(this.value);
+    })
 
-  // set line color
-  $('#drawing-line-color').on('change', function(){
-    canvas.freeDrawingBrush.color = this.value;
+    // set line color
+    $('#drawing-line-color').on('change', function(){
+      canvas.freeDrawingBrush.color = this.value;
 
 
-    $('#color-info').text(this.value);
+      $('#color-info').text(this.value);
 
-  })
+    })
 
-  $('#brush').on('click', function() {
+    // activate the brush (drawing mode is true)
+    $('#brush').on('click', function() {
 
-    canvas.isDrawingMode = true;
-    // Use Pencil Brush for drawing
-    canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
-    canvas.freeDrawingBrush.width = 10;
-    canvas.freeDrawingBrush.color = 'blue';
-  });
+      canvas.isDrawingMode = true;
+      // Use Pencil Brush for drawing
+      canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
+      canvas.freeDrawingBrush.width = 10;
+      canvas.freeDrawingBrush.color = 'blue';
+    });
+
+    // disable the brush (drawing mode is false)
+    $('.menu a.item').on('click', function(){
+      canvas.isDrawingMode = false;
+      if ( $('#brush').hasClass('active') ){
+        canvas.isDrawingMode = true;
+      }
+
+    });
+
 
 
   } // main.js will only execute on posts/new page
