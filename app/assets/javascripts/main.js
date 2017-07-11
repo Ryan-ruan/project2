@@ -31,30 +31,6 @@ $(document).ready(function(){
     height: 480,
     // isDrawingMode: true
   });
-  // var imgElement = $('#my-image');
-  // var imgInstance = new fabric.Image(imgElement, {
-  //   left: 100,
-  //   top: 100,
-  //   angle: 30,
-  //   opacity: 0.85
-  // });
-  // canvas.add(imgInstance);
-  fabric.Image.fromURL('asset2.png', function(oImg) {
-    canvas.add(oImg);
-  });
-  // var imgElement = $('#my-image');
-  // var imgInstance = new fabric.Image(imgElement, {
-  //   left: 100,
-  //   top: 100,
-  //   angle: 30,
-  //   opacity: 0.85
-  // });
-  // canvas.add(imgInstance);
-  // fabric.Image.fromURL('http://i.imgur.com/uBO2Not.png', function(oImg) {
-  //   canvas.add(oImg);
-  // });
-  // canvas.setHeight(480);
-  // canvas.setWidth(640);
 
   // define a function to save the sanpshot onto a canvas we placed on html page
   function take_snap_canvas(){
@@ -107,7 +83,7 @@ $(document).ready(function(){
   // switch between tabs
   $('.menu .item').tab()
 
-  // functions buttons
+  // ==============functions buttons - BACK TO CAMERA - ryan ============
   $("#Camera").on("click",function(){
     $('#webcamjs').show();
     Webcam.attach( '#my_camera' );
@@ -115,9 +91,17 @@ $(document).ready(function(){
     });
 
 
+<<<<<<< HEAD
   // ---------- sticker tab - unicar -------------
   $('#sticker1').on('click', function() {
     fabric.Image.fromURL('http://i.imgur.com/OmwdQK3.png', function(oImg) {
+=======
+  // ======== sticker tab - unicar ========
+  $('.ui.image').on('click', function() {
+    var url = $(this).attr('src');
+    fabric.Image.fromURL(url, function(oImg) {
+      oImg.scale(0.5);
+>>>>>>> c8c90ae119c956547d08f30bf7367c06d6924ec7
       canvas.add(oImg);
     });
 
@@ -126,11 +110,27 @@ $(document).ready(function(){
 
   // ------------ text tab -- Lingxiao ------------
   // set font color and size
-  var fillColour = $('#font-colour').val();
+  var fontColour = $('#font-colour').val();
   var fontSize = $('#font-size').val();
 
   $('#font-colour').on('change', function(){
-    fillColour = $(this).val();
+    fontColour = $(this).val();
+  });
+
+  $('#text-params button').on('click', function(evt){
+
+    var text = new fabric.IText('Type text here', {
+      width: 300,
+      top: 240,
+      left: 80,
+      fontSize: fontSize,
+      textAlign: 'center',
+      fixedWidth: 150,
+      fill: fontColour,
+      fontFamily: 'Avenir'
+    });
+
+    canvas.add(text);
   });
 
 
@@ -162,6 +162,6 @@ $(document).ready(function(){
     });
 
 
-  }
+  } // main.js will only execute on posts/new page
 
 }); // end of document ready

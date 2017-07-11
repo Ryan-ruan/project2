@@ -1,15 +1,19 @@
 
+<!-- =========================== Webcam UI================================================ -->
+<div class="holder" id="webcamjs">
+  <div class="ui two column centered middle aligned grid">
+    <div class="row"></div>
 
-<div class="ui two column centered grid" id="webcamjs">
-
-  <!-- div wrapp the camera live preview -->
-
-  <div class="ui segment">
-    <div class="column" id="my_camera"></div>
-  </div>
+    <!-- wrapp the camera live preview -->
+    <div class="ui segment">
+      <div id="my_camera"></div>
+    </div>
 
 
-  <div class="ui four column centered row">
+    <div class="ui four column centered row">
+      <div id="pre_take_buttons">
+        <button class="ui teal button">Take Snapshot</button>
+      </div>
 
     <div id="pre_take_buttons">
       <button class="ui teal button"><i class="photo icon"></i>Take Snapshot</button>
@@ -22,10 +26,10 @@
 
   </div>
 
-
 </div>
-<!-- closing #webcamjs -->
 <!-- ===========================Webcam UI================================================ -->
+
+
 
 <div class="ui grid" id="editor_ui" style="display:none">
   <!-- function buttons view -->
@@ -40,7 +44,6 @@
 
 
   <!-- Vertical Tabs View -->
-
   <div class="four wide column">
 
           <div class="column">
@@ -57,13 +60,17 @@
                 <div class="ui active tab segment" data-tab="first">
                   <div class="ui mini bordered circular images">
                     <img id="sticker1" class="ui image" src="http://i.imgur.com/OmwdQK3.png">
-                    <img id="sticker2" class="ui image" src="http://i.imgur.com/OmwdQK3.png">
-                    <img id="sticker3" class="ui image" src="http://i.imgur.com/OmwdQK3.png">
-                    <img id="sticker4" class="ui image" src="http://i.imgur.com/OmwdQK3.png">
-                    <img id="sticker5" class="ui image" src="http://i.imgur.com/OmwdQK3.png">
-                    <img id="sticker6" class="ui image" src="http://i.imgur.com/OmwdQK3.png">
-                    <img id="sticker7" class="ui image" src="http://i.imgur.com/OmwdQK3.png">
-                    <img id="sticker8" class="ui image" src="http://i.imgur.com/OmwdQK3.png">
+                    <img id="sticker2" class="ui image" src="http://i.imgur.com/mGJOChj.png">
+                    <img id="sticker3" class="ui image" src="http://i.imgur.com/EZvXuJx.png">
+                    <img id="sticker4" class="ui image" src="http://i.imgur.com/xVuphsY.png">
+                    <img id="sticker5" class="ui image" src="http://i.imgur.com/fWyh1vz.png">
+                    <img id="sticker6" class="ui image" src="http://i.imgur.com/m5OrZC6.png">
+                    <img id="sticker7" class="ui image" src="http://i.imgur.com/uTxdggQ.png">
+                    <img id="sticker8" class="ui image" src="http://i.imgur.com/1cuJVDE.png">
+                    <img id="sticker9" class="ui image" src="http://i.imgur.com/TMVyNL5.png">
+                    <img id="sticker10" class="ui image" src="http://i.imgur.com/2bTuQ2N.png">
+                    <img id="sticker10" class="ui image" src="http://i.imgur.com/n6luHhJ.png">
+                    <img id="sticker10" class="ui image" src="http://i.imgur.com/9pxlO69.png">
                   </div>
                 </div>
                 <!-- brush tab -->
@@ -109,7 +116,7 @@
 
   </div>
 
-  <!-- Canvas View-->
+  <!-- ================Canvas View====================-->
   <div class="ui segment">
     <div class="eight wide column">
       <canvas id="my_canvas"></canvas>
