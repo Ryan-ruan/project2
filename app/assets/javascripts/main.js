@@ -27,6 +27,20 @@ $('body.posts.new').ready(function(){
     width: 640,
     height: 480,
     // isDrawingMode: true
+<<<<<<< HEAD
+=======
+  });
+  // var imgElement = $('#my-image');
+  // var imgInstance = new fabric.Image(imgElement, {
+  //   left: 100,
+  //   top: 100,
+  //   angle: 30,
+  //   opacity: 0.85
+  // });
+  // canvas.add(imgInstance);
+  fabric.Image.fromURL('asset2.png', function(oImg) {
+    canvas.add(oImg);
+>>>>>>> c468bb7892b2da96d60051a53962d86ca4545b36
   });
   // var imgElement = $('#my-image');
   // var imgInstance = new fabric.Image(imgElement, {
@@ -99,6 +113,7 @@ $('body.posts.new').ready(function(){
   $('.menu .item').tab()
 
 
+<<<<<<< HEAD
   $("#Camera").on("click",function(){
     $('#webcamjs').show();
     Webcam.attach( '#my_camera' );
@@ -106,6 +121,8 @@ $('body.posts.new').ready(function(){
     });
 
 
+=======
+>>>>>>> c468bb7892b2da96d60051a53962d86ca4545b36
 
 
 }); // end of document ready
