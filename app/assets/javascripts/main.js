@@ -91,17 +91,11 @@ $(document).ready(function(){
     });
 
 
-<<<<<<< HEAD
-  // ---------- sticker tab - unicar -------------
-  $('#sticker1').on('click', function() {
-    fabric.Image.fromURL('http://i.imgur.com/OmwdQK3.png', function(oImg) {
-=======
   // ======== sticker tab - unicar ========
   $('.ui.image').on('click', function() {
     var url = $(this).attr('src');
     fabric.Image.fromURL(url, function(oImg) {
       oImg.scale(0.5);
->>>>>>> c8c90ae119c956547d08f30bf7367c06d6924ec7
       canvas.add(oImg);
     });
 
@@ -153,7 +147,6 @@ $(document).ready(function(){
   })
 
   $('#brush').on('click', function() {
-<<<<<<< HEAD
 
     canvas.isDrawingMode = true;
     // Use Pencil Brush for drawing
@@ -161,15 +154,6 @@ $(document).ready(function(){
     canvas.freeDrawingBrush.width = 10;
     canvas.freeDrawingBrush.color = 'blue';
   });
-=======
-    // var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
-      canvas.isDrawingMode = true;
-      // Use Pencil Brush for drawing
-      canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
-      canvas.freeDrawingBrush.width = 10;
-      canvas.freeDrawingBrush.color = 'black';
-    });
->>>>>>> ab69b6cdfecdf3561ec4f596fd4a80c9cb901657
 
 
   } // main.js will only execute on posts/new page
