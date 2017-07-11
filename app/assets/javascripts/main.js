@@ -126,11 +126,27 @@ $(document).ready(function(){
 
   // ========= text tab -- Lingxiao ==========
   // set font color and size
-  var fillColour = $('#font-colour').val();
+  var fontColour = $('#font-colour').val();
   var fontSize = $('#font-size').val();
 
   $('#font-colour').on('change', function(){
-    fillColour = $(this).val();
+    fontColour = $(this).val();
+  });
+
+  $('#text-params button').on('click', function(evt){
+
+    var text = new fabric.IText('Type text here', {
+      width: 300,
+      top: 240,
+      left: 80,
+      fontSize: fontSize,
+      textAlign: 'center',
+      fixedWidth: 150,
+      fill: fontColour,
+      fontFamily: 'Avenir'
+    });
+
+    canvas.add(text);
   });
 
 
