@@ -203,6 +203,9 @@ $(document).ready(function(){
       });
 
 
+
+
+
     // ======== sticker tab - unicar ========
     $('.ui.image').on('click', function() {
       var url = $(this).attr('src');
@@ -211,20 +214,22 @@ $(document).ready(function(){
         canvas.add(oImg);
       });
 
-      canvas.add(imgInstance);
+      // canvas.add(imgInstance);
     });
+
+
+
 
     // ------------ text tab -- Lingxiao ------------
     // set font color and size
-    var fontColour = $('#font-colour').val();
-    var fontSize = $('#font-size').val();
+    var fontColor = $('#font-color').val();
+    var fontSize = parseInt( $('#font-size').val() );
 
-    $('#font-colour').on('change', function(){
-      fontColour = this.value;
+    $('#font-color').on('change', function(){
+      fontColor = $(this).val();
     });
 
     $('#font-size').on('change', function(){
-      debugger;
       fontSize = $(this).val();
       $('#size-info').text(fontSize);
     });
@@ -234,10 +239,10 @@ $(document).ready(function(){
         width: 300,
         top: 240,
         left: 80,
-        fontSize: parseInt(fontSize),
+        fontSize: fontSize,
         textAlign: 'center',
         fixedWidth: 150,
-        fill: fontColour,
+        fill: fontColor,
         fontFamily: 'Avenir'
       });
 
