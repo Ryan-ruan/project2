@@ -49,14 +49,22 @@
       <div class="ui two column grid">
         <div class="column">
           <div class="ui vertical icon menu">
-            <a class="active item" data-tab="first"><i class="gamepad icon"></i></a>
+            <a class="active item" data-tab="first" id="brush"><i class="gamepad icon"></i>
+            </a>
             <a class="item" data-tab="second"><i class="gamepad icon"></i></a>
             <a class="item" data-tab="third"><i class="gamepad icon"></i></a>
           </div>
         </div>
         <div class="stretched column">
           <div class="ui active tab segment" data-tab="first">
-            First
+            Brush
+            <br>
+            <label for="drawing_line-width">Line width:</label>
+            <span id="width-info" class="info"></span>
+            <input type="range" value="150" min="0" max="150" id="drawing-line-width">
+            <label for="drawing-color">Line color:</label>
+            <br>
+            <input type="color" value="#005E7A" id="drawing-line-color">
           </div>
           <div class="ui tab segment" data-tab="second">
             Second

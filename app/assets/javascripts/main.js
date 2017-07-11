@@ -100,14 +100,20 @@ $('body.posts.new').ready(function(){
     $('#editor_ui').show();
   });
 
-
-  // ==========================
-
-
-  // $('#pencil').on('click', function() {
-  //   canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
-  // });
   $('.menu .item').tab()
+
+
+
+  // ========= add text ==========
+
+  // set font color and size
+  var fillColour = $('#font-colour').val();
+  var fontSize = $('#font-size').val();
+
+  $('#font-colour').on('change', function(){
+    fillColour = $(this).val();
+  });
+
 
 
   $("#Camera").on("click",function(){
@@ -127,6 +133,27 @@ $('body.posts.new').ready(function(){
     });
 
 
+// ======= brushes editor -- jonathan ==========
+  $('#drawing-line-width').on('change', function(){
+    canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
+
+    $('#width-info').text(this.value);
+  })
+
+  $('#drawing-line-color').on('change', function(){
+    canvas.freeDrawingBrush.color = this.value;
+
+    $('#width-info').text(this.value);
+  })
+
+  $('#brush').on('click', function() {
+    // var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
+      canvas.isDrawingMode = true;
+      // Use Pencil Brush for drawing
+      canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
+      canvas.freeDrawingBrush.width = 10;
+      canvas.freeDrawingBrush.color = 'blue';
+    });
 
 
 }); // end of document ready
