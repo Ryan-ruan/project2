@@ -96,9 +96,16 @@ $('body.posts.new').ready(function(){
   // $('#pencil').on('click', function() {
   //   canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
   // });
-  $('.menu .item').tab()
+  $('.menu .item').tab();
 
+  $('#brush').on('click', function() {
+    // var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
+      canvas.isDrawingMode = true;
 
+      canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
+      canvas.freeDrawingBrush.color = "blue";
+      canvas.freeDrawingBrush.width = 10;
+    });
 
-
+  
 }); // end of document ready
