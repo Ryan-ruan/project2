@@ -158,7 +158,7 @@ $(document).ready(function(){
       // Use Pencil Brush for drawing
       canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
       canvas.freeDrawingBrush.width = 10;
-      canvas.freeDrawingBrush.color = 'blue';
+      canvas.freeDrawingBrush.color = 'black';
     });
 
 
