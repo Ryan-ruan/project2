@@ -19,10 +19,29 @@
 
 <div id="editor_ui" style="display:none">
 
-  <div id="menu">MF</div>
+  <div id="menu" class="ui ten column grid">
+    <div class="column">
+      <button class="ui button" id ='Clear'><i class="trash outline icon"></i>Clear </button>
+    </div>
+    <div class="column" id ='Save' >
+      <button class="ui button"><i class="save icon"></i>Save </button>
+    </div>
+    <div class="column" id ='upload' >
+      <button class="ui button"><i class="cloud upload icon"></i>upload</button>
+    </div>
+    <div class="column" id ='Camera'>
+      <button class="ui button"><i class="camera retro icon"></i>Camera</button>
+    </div>
+  </div>
+
   <div id="functions">Pizza</div>
+  <!-- <div id="filter">
+    <div class="ui checkbox" >
+      <input type="checkbox" id='Grayscale'>
+      <label >Grayscale</label>
+    </div>
+  </div> -->
   <canvas id="my_canvas"></canvas>
-  <!-- <img id="my-image" src="http://i.imgur.com/uBO2Not.png" alt=""> -->
 
   <div class="ui three column grid">
     <div class="column">

@@ -36,9 +36,9 @@ $('body.posts.new').ready(function(){
   //   opacity: 0.85
   // });
   // canvas.add(imgInstance);
-  fabric.Image.fromURL('http://i.imgur.com/uBO2Not.png', function(oImg) {
-    canvas.add(oImg);
-  });
+  // fabric.Image.fromURL('http://i.imgur.com/uBO2Not.png', function(oImg) {
+  //   canvas.add(oImg);
+  // });
   // canvas.setHeight(480);
   // canvas.setWidth(640);
 
@@ -97,6 +97,13 @@ $('body.posts.new').ready(function(){
   //   canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
   // });
   $('.menu .item').tab()
+
+
+  $("#Camera").on("click",function(){
+    $('#webcamjs').show();
+    Webcam.attach( '#my_camera' );
+    $('#editor_ui').hide();
+    });
 
 
 
