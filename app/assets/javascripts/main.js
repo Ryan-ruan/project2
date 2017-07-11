@@ -98,14 +98,26 @@ $('body.posts.new').ready(function(){
   // });
   $('.menu .item').tab();
 
+  $('#drawing-line-width').on('change', function(){
+    canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
+
+    $('#width-info').text(this.value);
+  })
+
+  $('#drawing-line-color').on('change', function(){
+    canvas.freeDrawingBrush.color = this.value;
+
+    $('#width-info').text(this.value);
+  })
+
   $('#brush').on('click', function() {
     // var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
       canvas.isDrawingMode = true;
-
+      // Use Pencil Brush for drawing
       canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
-      canvas.freeDrawingBrush.color = "blue";
       canvas.freeDrawingBrush.width = 10;
+      canvas.freeDrawingBrush.color = 'blue';
     });
 
-  
+
 }); // end of document ready
