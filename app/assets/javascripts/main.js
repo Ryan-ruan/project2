@@ -39,6 +39,17 @@ $('body.posts.new').ready(function(){
   fabric.Image.fromURL('asset2.png', function(oImg) {
     canvas.add(oImg);
   });
+  // var imgElement = $('#my-image');
+  // var imgInstance = new fabric.Image(imgElement, {
+  //   left: 100,
+  //   top: 100,
+  //   angle: 30,
+  //   opacity: 0.85
+  // });
+  // canvas.add(imgInstance);
+  // fabric.Image.fromURL('http://i.imgur.com/uBO2Not.png', function(oImg) {
+  //   canvas.add(oImg);
+  // });
   // canvas.setHeight(480);
   // canvas.setWidth(640);
 
@@ -85,11 +96,13 @@ $('body.posts.new').ready(function(){
     $('#pre_take_buttons').show();
     $('#post_take_buttons').hide();
     $('#webcamjs').hide();
-    Webcam.reset(); // shutdown the webcam
+    Webcam.reset();
     $('#editor_ui').show();
   });
 
   $('.menu .item').tab()
+
+
 
   // ========= add text ==========
 
@@ -101,29 +114,46 @@ $('body.posts.new').ready(function(){
     fillColour = $(this).val();
   });
 
-  $('#font-size').on('change', function(){
-    fontSize = $(this).val();
-    $('#text-params span').text(fontSize);
-  });
 
-  // click add button
-  $('#text-params button').on('click', function(evt){
 
-    var text = new fabric.IText('Type text here', {
-      width: 300,
-      top: 5,
-      left: 5,
-      fontSize: fontSize,
-      textAlign: 'center',
-      fixedWidth: 150,
-      fill: fillColour,
-      fontFamily: 'Avenir'
+  $("#Camera").on("click",function(){
+    $('#webcamjs').show();
+    Webcam.attach( '#my_camera' );
+    $('#editor_ui').hide();
     });
 
-    canvas.add(text);
-  });
 
 
+    $('#sticker1').on('click', function() {
+      fabric.Image.fromURL('http://i.imgur.com/OmwdQK3.png', function(oImg) {
+        canvas.add(oImg);
+      });
+
+      canvas.add(imgInstance);
+    });
+
+
+// ======= brushes editor -- jonathan ==========
+  $('#drawing-line-width').on('change', function(){
+    canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
+
+    $('#width-info').text(this.value);
+  })
+
+  $('#drawing-line-color').on('change', function(){
+    canvas.freeDrawingBrush.color = this.value;
+
+    $('#width-info').text(this.value);
+  })
+
+  $('#brush').on('click', function() {
+    // var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
+      canvas.isDrawingMode = true;
+      // Use Pencil Brush for drawing
+      canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
+      canvas.freeDrawingBrush.width = 10;
+      canvas.freeDrawingBrush.color = 'blue';
+    });
 
 
 }); // end of document ready

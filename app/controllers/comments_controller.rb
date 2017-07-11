@@ -4,8 +4,8 @@ class CommentsController < ApplicationController
   before_action :comment_owner, only: [:destroy, :edit, :update]
 
   def create
-    @comment = @post.comments.create(params[:comment].permit(:content))
-    @comment.user_id = current_user.id
+    @comment = @post.comments.create(params[:comment].permit(:context))
+    @comment.user_id = @current_user.id
     @comment.save
 
     if @comment.save
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(params[:comment].permit(:content))
+    if @comment.update(params[:comment].permit(:context))
       redirect_to post_path(@post)
     else
       render 'edit'
@@ -39,11 +39,11 @@ class CommentsController < ApplicationController
   end
 
   def find_comment
-    @comment = @post.comment.find(params[:id])
+    @comment = @post.comments.find(params[:id])
   end
 
   def comment_owner
-    unless current_user.id == @current.user_id
+    unless @current_user.id == @comment.user_id
       flash[:notice] = "You have no access to this comment!"
       redirect_to @post
     end
