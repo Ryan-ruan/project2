@@ -1,7 +1,10 @@
 
 
-$('body.posts.new').ready(function(){
+$(document).ready(function(){
   console.log("all good");
+
+
+  if( $('body.posts.new').length ){
 
   // initialize the canvas, get the context as '2d'
   // var $canvas = $('#my_canvas');
@@ -158,5 +161,7 @@ $('body.posts.new').ready(function(){
       canvas.freeDrawingBrush.color = 'blue';
     });
 
+
+  }
 
 }); // end of document ready
