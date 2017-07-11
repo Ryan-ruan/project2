@@ -99,18 +99,43 @@ $('body.posts.new').ready(function(){
     $('#pre_take_buttons').show();
     $('#post_take_buttons').hide();
     $('#webcamjs').hide();
-    Webcam.reset();
+    Webcam.reset(); // shutdown the webcam
     $('#editor_ui').show();
   });
 
-
-  // ==========================
-
-
-  // $('#pencil').on('click', function() {
-  //   canvas.freeDrawingBrush = new fabric[this.value + 'Brush'](canvas);
-  // });
   $('.menu .item').tab()
+
+  // ========= add text ==========
+
+  // set font color and size
+  var fillColour = $('#font-colour').val();
+  var fontSize = $('#font-size').val();
+
+  $('#font-colour').on('change', function(){
+    fillColour = $(this).val();
+  });
+
+  $('#font-size').on('change', function(){
+    fontSize = $(this).val();
+    $('#text-params span').text(fontSize);
+  });
+
+  // click add button
+  $('#text-params button').on('click', function(evt){
+
+    var text = new fabric.IText('Type text here', {
+      width: 300,
+      top: 5,
+      left: 5,
+      fontSize: fontSize,
+      textAlign: 'center',
+      fixedWidth: 150,
+      fill: fillColour,
+      fontFamily: 'Avenir'
+    });
+
+    canvas.add(text);
+  });
 
 
 <<<<<<< HEAD
