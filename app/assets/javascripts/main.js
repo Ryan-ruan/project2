@@ -164,6 +164,11 @@ $(document).ready(function(){
       }
 
     });
+    // clears the stickers, drawings & texts off upon clicking
+    $('#clear').on('click', function(){
+      canvas.freeDrawingBrush.clear();
+
+    });
 
 
 
