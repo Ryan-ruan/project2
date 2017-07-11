@@ -147,13 +147,13 @@ $(document).ready(function(){
   })
 
   $('#brush').on('click', function() {
-    // var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
-      canvas.isDrawingMode = true;
-      // Use Pencil Brush for drawing
-      canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
-      canvas.freeDrawingBrush.width = 10;
-      canvas.freeDrawingBrush.color = 'black';
-    });
+
+    canvas.isDrawingMode = true;
+    // Use Pencil Brush for drawing
+    canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
+    canvas.freeDrawingBrush.width = 10;
+    canvas.freeDrawingBrush.color = 'blue';
+  });
 
 
   } // main.js will only execute on posts/new page
