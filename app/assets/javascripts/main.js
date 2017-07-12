@@ -1,5 +1,7 @@
 
 
+var canvas;
+
 $(document).ready(function(){
   console.log("all good");
 
@@ -26,7 +28,7 @@ $(document).ready(function(){
     // attach the camera(live preview) onto a div '#my_camera'
     Webcam.attach( '#my_camera' );
 
-    var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
+    canvas = this.__canvas = new fabric.Canvas('my_canvas', {
       width: 640,
       height: 480,
       // isDrawingMode: true
@@ -38,121 +40,157 @@ $(document).ready(function(){
 
         canvas.setBackgroundImage(data_uri, canvas.renderAll.bind(canvas));
       });
+      // console.log(filter_vals);// try to call the filter_vals from memory
+      console.log('filters:', filters);
+      // console.log(canvas.image);
+      // console.log(canvas.backgroundimage);
+
+      // loop over settings in CSS filters object
+      //canvas.backgroundImage.filters.push( new fabric.Image.filters.Grayscale(100) );
+
+      // after looping over all the filtera and pushing them onto canvas.backgroundImage.filters
+      // if (!filters) {
+      //   return;
+      // }else{
+      //   canvas.backgroundImage.applyFilters(function(){
+      //     canvas.renderAll();
+      //   });
+      // }
+
     }
 
         // canvas.renderAll.bind(canvas);
 
-  var selectedClass = 'basic';
+
+// ==============filters functions  - ryan ============
+
+  var unselectedClass = 'basic';
 
   var filters = {};
 
-  var applyFilters = function (filters, id) {
+  var applyFilters = function(filters, id) {
     var $elem = $(id);
+    var filter_val = '';
     for(var key in filters){
       var val = filters[key];
-      var css_val = '';
-      if(val.length){
-        var css_val = key + '(' + val + ')';
-      }
-      $elem.css('filter', css_val);
+      console.log(key +" filter's value "+val );//Q3 numbers?
+      filter_val += key + '(' + val + ') ';
+//
     }
+    // var filter_vals =filter_val;// try to save the value in to the memory?
+    console.log(filter_val);
+    $elem.css('filter', filter_val);
   }
 
+  var resetFilters = function(){
+    var clickedbuttons= $('.filters_buttons').children().not('.basic');
+    //pass between dom element and jquery element? 2 filter_val  call beyound the function?
+    console.log(clickedbuttons);
+    if (!clickedbuttons.length) {
+      return;
+    }else {
+      for (var i = 0; i < clickedbuttons.length; i++) {
+          $(clickedbuttons[i]).addClass('basic');
+      }
+    }
+    $( '#my_camera' ).css('filter', '');
+    var filters = {};
+    console.log(filters);
+  };
 
 
+  var hideFilters = function () {
+    $('#filters_button').show();
+    $('.filters_buttons').hide();
+  };
 
-
+  // ==============filters buttons  - ryan ============
 
   $('#filters_button button').on('click', function(){
     // display filters_button
-
     // swap button sets
     $('#filters_button').hide();
     $('.filters_buttons').show();
   });
 
   $('#Reset').on('click', function(){
+    resetFilters();
+
   });
 
   $('#Blur').on('click', function(){
-    $(this).toggleClass(selectedClass);
-
-    if( $(this).hasClass(selectedClass) ){
-      console.log('off');
-      $("#my_camera").css("filter", "");
-      filters.blur = '';
+    $(this).toggleClass(unselectedClass);
+    if( $(this).hasClass(unselectedClass) ){
+      filters.blur ='0';
     } else {
-      console.log('on');
-      $("#my_camera").css("filter", "blur(3px)");
-      filters.blur = "3px";
+      filters.blur = "3px";  // {css: '3px', fabric: '100'}
     }
     applyFilters(filters, "#my_camera");
-
   });
 
 
   $('#BnW').on('click', function(){
-
-    $(this).toggleClass(selectedClass);
-
-    if( $(this).hasClass(selectedClass) ){
-      console.log('off');
-      $("#my_camera").css("filter", "");
-      filters.grayscale = '';
+    $(this).toggleClass(unselectedClass);
+    if( $(this).hasClass(unselectedClass) ){
+      filters.grayscale = '0%';
     } else {
-      console.log('on');
-      $("#my_camera").css("filter", "grayscale(100%)");
       filters.grayscale = "100%";
     }
     applyFilters(filters, "#my_camera");
   });
-  //
-  // $('#Bright').on('click', function(){
-  //
-  //       $(this).toggleClass(selectedClass);
-  //
-  //       if( $(this).hasClass(selectedClass) ){
-  //         console.log('off');
-  //         $("#my_camera").css("filter", "");
-  //         filters.brightness = '';
-  //       } else {
-  //         console.log('on');
-  //         $("#my_camera").css("filter", "brightness(300%)");
-  //         filters.brightness = "300%";
-  //       }
-  //       applyFilters(filters, "#my_camera");
-  // });
 
-//   $('#Hue').on('click', function(){
-//     $(this).toggleClass(selectedClass);
-//
-//     if( $(this).hasClass(selectedClass) ){
-//       console.log('off');
-//       $("#my_camera").css("filter", "");
-//       filters.hue = '';
-//     } else {
-//       console.log('on');
-//       $("#my_camera").css("filter", "hue-rotate(90deg)");
-//       filters.hue = "300%";
-//     }
-//     applyFilters(filters, "#my_camera");
-// });
+  $('#Bright').on('click', function(){
+    $(this).toggleClass(unselectedClass);
+    if( $(this).hasClass(unselectedClass) ){
+      filters.brightness = '100%';
+    } else {
+      filters.brightness = "300%";
+    }
+    applyFilters(filters, "#my_camera");
+  });
 
-  // });
-  $('#Invent').on('click', function(){
-    $("#my_camera").css({"filter":"grayscale(100%)"});
+  $('#Hue').on('click', function(){
+    $(this).toggleClass(unselectedClass);
+    if( $(this).hasClass(unselectedClass) ){
+      filters["hue-rotate"] = '0deg';
+    } else {
+      filters["hue-rotate"] = "180deg";
+    }
+    applyFilters(filters, "#my_camera");
+  });
 
+
+  $('#Saturate').on('click', function(){
+    $(this).toggleClass(unselectedClass);
+    if( $(this).hasClass(unselectedClass) ){
+      filters.saturate = '100%';
+    } else {
+      filters.saturate = "500%";
+    }
+    applyFilters(filters, "#my_camera");
   });
 
   $('#Sepia').on('click', function(){
-    $("#my_camera").css({"filter":"grayscale(100%)"});
+    $(this).toggleClass(unselectedClass);
+    if( $(this).hasClass(unselectedClass) ){
+      filters.sepia = '0%';
+    } else {
+      filters.sepia = "400%";
+    }
+    applyFilters(filters, "#my_camera");
+  });
 
-  })
 
   $('#Contrast').on('click', function(){
-    $("#my_camera").css({"filter":"grayscale(100%)"});
-
+    $(this).toggleClass(unselectedClass);
+    if( $(this).hasClass(unselectedClass) ){
+      filters.contrast = '100%';
+    } else {
+      filters.contrast = "400%";
+    }
+    applyFilters(filters, "#my_camera");
   });
+
 
 
 
@@ -177,6 +215,9 @@ $(document).ready(function(){
   		// swap buttons back
       $('#pre_take_buttons').show();
       $('#post_take_buttons').hide();
+      resetFilters();
+      hideFilters();
+
     });
 
 
@@ -196,10 +237,12 @@ $(document).ready(function(){
     $('.menu .item').tab();
 
     // ==============functions buttons - BACK TO CAMERA - ryan ============
-    $("#Camera").on("click",function(){
+    $("#backToCamera").on("click",function(){
       $('#webcamjs').show();
       Webcam.attach( '#my_camera' );
       $('#editor_ui').hide();
+      resetFilters();
+      hideFilters();
       });
 
 
