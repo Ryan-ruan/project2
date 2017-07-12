@@ -17,35 +17,30 @@
 
 @import "semantic-ui";
 
-// body {
-//   background: linear-gradient(213deg, #b5cc18, #f2711c);
-//   background-size: 200% 200%;
-//
-//   -webkit-animation: AnimationName 30s ease infinite;
-//   -moz-animation: AnimationName 30s ease infinite;
-//   animation: AnimationName 30s ease infinite;
-//
-//   @-webkit-keyframes AnimationName {
-//       0%{background-position:88% 0%}
-//       50%{background-position:13% 100%}
-//       100%{background-position:88% 0%}
-//   }
-//   @-moz-keyframes AnimationName {
-//       0%{background-position:88% 0%}
-//       50%{background-position:13% 100%}
-//       100%{background-position:88% 0%}
-//   }
-//   @keyframes AnimationName {
-//       0%{background-position:88% 0%}
-//       50%{background-position:13% 100%}
-//       100%{background-position:88% 0%}
-//   }
-// }
+body {
+  background: linear-gradient(229deg, #b5cc18, #f2711c);
+  background-size: 400% 400%;
 
+  -webkit-animation: AnimationName 19s ease infinite;
+  -moz-animation: AnimationName 19s ease infinite;
+  animation: AnimationName 19s ease infinite;
 
-
-
-
+  @-webkit-keyframes AnimationName {
+      0%{background-position:55% 0%}
+      50%{background-position:46% 100%}
+      100%{background-position:55% 0%}
+  }
+  @-moz-keyframes AnimationName {
+      0%{background-position:55% 0%}
+      50%{background-position:46% 100%}
+      100%{background-position:55% 0%}
+  }
+  @keyframes AnimationName {
+      0%{background-position:55% 0%}
+      50%{background-position:46% 100%}
+      100%{background-position:55% 0%}
+  }
+}
 
 .welcome {
   text-align: center;

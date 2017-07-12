@@ -22,8 +22,10 @@
 
             <div class="content">
               <span class="right floated">
-                <i class="heart outline like icon"></i>
-                17 likes
+                <%= link_to like_post_path(p), class: 'like', method: :put do %>
+                  <i class="heart outline like icon"></i>
+                  <%= p.get_upvotes.size %> likes
+                <% end %>
               </span>
 
               <i class="comment icon"></i>

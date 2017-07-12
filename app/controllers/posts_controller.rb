@@ -45,9 +45,9 @@ class PostsController < ApplicationController
     redirect_to user_path(@current_user)
   end
 
-  private
-  def post_params
-    params.require(:post).permit(:like_counts)
+  def upvote
+    @post = Post.find params['id']
+    @post.upvote_from @current_user
+    redirect_to posts_path
   end
-
 end
