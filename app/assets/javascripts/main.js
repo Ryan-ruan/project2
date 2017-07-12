@@ -1,7 +1,4 @@
-
-
 var canvas;
-
 $(document).ready(function(){
   console.log("all good");
 
@@ -28,7 +25,7 @@ $(document).ready(function(){
     // attach the camera(live preview) onto a div '#my_camera'
     Webcam.attach( '#my_camera' );
 
-    canvas = this.__canvas = new fabric.Canvas('my_canvas', {
+     canvas = this.__canvas = new fabric.Canvas('my_canvas', {
       width: 640,
       height: 480,
       // isDrawingMode: true
@@ -40,21 +37,19 @@ $(document).ready(function(){
 
         canvas.setBackgroundImage(data_uri, canvas.renderAll.bind(canvas));
       });
-      // console.log(filter_vals);// try to call the filter_vals from memory
       console.log('filters:', filters);
-      // console.log(canvas.image);
-      // console.log(canvas.backgroundimage);
 
       // loop over settings in CSS filters object
-      //canvas.backgroundImage.filters.push( new fabric.Image.filters.Grayscale(100) );
+
+      canvas.backgroundImage.filters.push( new fabric.Image.filters.Grayscale(100) );
 
       // after looping over all the filtera and pushing them onto canvas.backgroundImage.filters
       // if (!filters) {
       //   return;
       // }else{
-      //   canvas.backgroundImage.applyFilters(function(){
-      //     canvas.renderAll();
-      //   });
+        canvas.backgroundImage.applyFilters(function(){
+          canvas.renderAll();
+        });
       // }
 
     }
@@ -95,7 +90,6 @@ $(document).ready(function(){
     }
     $( '#my_camera' ).css('filter', '');
     var filters = {};
-    console.log(filters);
   };
 
 
@@ -246,28 +240,37 @@ $(document).ready(function(){
       });
 
 
+
+
+
     // ======== sticker tab - unicar ========
     $('.ui.image').on('click', function() {
       var url = $(this).attr('src');
       fabric.Image.fromURL(url, function(oImg) {
         oImg.scale(0.5);
         canvas.add(oImg);
-      });
+      }, { crossOrigin: 'Anonymous' });
 
-      canvas.add(imgInstance);
     });
+
+
+
 
     // ------------ text tab -- Lingxiao ------------
     // set font color and size
-    var fontColour = $('#font-colour').val();
-    var fontSize = $('#font-size').val();
+    var fontColor = $('#font-color').val();
+    var fontSize = parseInt( $('#font-size').val() );
 
-    $('#font-colour').on('change', function(){
-      fontColour = $(this).val();
+    $('#font-color').on('change', function(){
+      fontColor = $(this).val();
     });
 
-    $('#text-params button').on('click', function(evt){
+    $('#font-size').on('change', function(){
+      fontSize = $(this).val();
+      $('#size-info').text(fontSize);
+    });
 
+    $('#add-text').on('click', function(){
       var text = new fabric.IText('Type text here', {
         width: 300,
         top: 240,
@@ -275,7 +278,7 @@ $(document).ready(function(){
         fontSize: fontSize,
         textAlign: 'center',
         fixedWidth: 150,
-        fill: fontColour,
+        fill: fontColor,
         fontFamily: 'Avenir'
       });
 
@@ -317,6 +320,47 @@ $(document).ready(function(){
       if ( $('#brush').hasClass('active') ){
         canvas.isDrawingMode = true;
       }
+
+    });
+
+
+    // clears the stickers, drawings & texts off upon clicking
+    $('#clear').on('click', function(){
+      // canvas.remove( canvas.getActiveObject() );
+      canvas.forEachObject(function(obj){
+        canvas.remove(obj);
+      });
+      // var objects = canvas._objects;
+      // for (var i = 0; i < objects.length; i++) {
+      //   canvas.remove( objects[i] );
+      // }
+    });
+
+    // brings back the webcam
+    $('#camera').on('click', function(){
+      Webcam.attach( '#my_camera' );
+      $('#webcamjs').show();
+      $('#pre_take_buttons').show();
+      $('#post_take_buttons').hide();
+      $('#editor_ui').hide();
+    });
+
+
+    //======================Save to computer ==========================
+
+    $('#download').click(function() {
+      window.location = canvas.toDataURL("image/png");
+    }); // save the image to computer
+
+    //======================Upload to gallery ==========================
+
+
+    $('#new_post').submit(function () {
+
+      var dataurl = canvas.toDataURL('image/png');
+      $('#image').val( dataurl );
+
+      console.log('GOT HERE');
 
     });
 

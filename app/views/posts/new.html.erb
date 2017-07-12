@@ -20,18 +20,18 @@
     </div>
 
     <div id="filters_button">
-      <button class="ui yello button">Filters</button>
+      <button class="ui white button">Filters</button>
     </div>
 
     <div class="filters_buttons" style="display:none">
-      <button class="ui yellow basic button" id ='Reset'>Reset</button>
-      <button class="ui yellow basic button" id ='Blur'>Blur</button>
-      <button class="ui yellow basic button" id = 'BnW'>BnW</button>
-      <button class="ui yellow basic button" id ='Bright'>Bright</button>
-      <button class="ui yellow basic button" id ='Hue'>Hue</button>
-      <button class="ui yellow basic button" id ="Saturate">Saturate</button>
-      <button class="ui yellow basic button" id='Sepia'>Sepia</button>
-      <button class="ui yellow basic button" id='Contrast'>Contrast</button>
+      <button class="ui white basic button" id ='Reset'>Reset</button>
+      <button class="ui white basic button" id ='Blur'>Blur</button>
+      <button class="ui white basic button" id = 'BnW'>BnW</button>
+      <button class="ui white basic button" id ='Bright'>Bright</button>
+      <button class="ui white basic button" id ='Hue'>Hue</button>
+      <button class="ui white basic button" id ="Saturate">Saturate</button>
+      <button class="ui white basic button" id='Sepia'>Sepia</button>
+      <button class="ui white basic button" id='Contrast'>Contrast</button>
     </div>
 
 
@@ -46,10 +46,22 @@
   <!-- function buttons view -->
   <div id="menu" class="centered row">
     <div class="eight wide center aligned column">
-      <button class="ui button" id ='Clear'><i class="trash outline icon"></i>Clear </button>
-      <button class="ui button"><i class="save icon"></i>Download </button>
-      <button class="ui button"><i class="cloud upload icon"></i>Upload</button>
-      <button class="ui button" id ='backToCamera'><i class="camera retro icon"></i>Camera</button>
+
+      <div class="ui buttons">
+        <button class="ui button" id ='clear'><i class="trash outline icon"></i>Clear </button>
+        <button id="download" class="ui button"><i class="save icon"></i>Download </button>
+        <button id="camera" class="ui button"><i class="camera retro icon"></i>Camera</button>
+
+        <!-- ===============Upload image to online gallery================ -->
+        <%= form_for Post.new, html: {multipart: true} do |f| %>
+        <% f.label :file %>
+        <%= hidden_field_tag :image %>
+
+        <button class="ui button"><i class="cloud upload icon"></i>Upload</button>
+        <% end %>
+        <!-- ===============Upload image to online gallery================ -->
+      </div>
+
     </div>
   </div>
 
@@ -83,6 +95,7 @@
                     <img id="sticker10" class="ui image" src="http://i.imgur.com/2bTuQ2N.png">
                     <img id="sticker10" class="ui image" src="http://i.imgur.com/n6luHhJ.png">
                     <img id="sticker10" class="ui image" src="http://i.imgur.com/9pxlO69.png">
+                    <img id="sticker11" class="ui image" src="/assets/asset.png">
                   </div>
                 </div>
                 <!-- brush tab -->
@@ -107,19 +120,10 @@
                   <br>
                   <br>
                   <label for="font-info">Size: </label>
-                  <span id="size-info" class="info"></span>
+                  <span id="size-info" class="info">48</span>
                   <br>
                   <input type="range" value="48" min="12" max="96" id="font-size">
-                  <button class="ui teal button">Add</button>
-
-
-                  <!-- <div id="text-params">
-                    Color: <input id="font-colour" type="color" value="#F62459">
-                    FontSize:<span>48</span>
-                    <input id="font-size" type="range" min="12" max="96" value="48" >
-                    <button class="ui teal button">Add</button>
-                  </div> -->
-
+                  <button id="add-text" class="ui teal small button">Add</button>
                 </div>
               </div>
             </div>
