@@ -210,10 +210,7 @@ $(document).ready(function(){
       fabric.Image.fromURL(url, function(oImg) {
         oImg.scale(0.5);
         canvas.add(oImg);
-      });
-
       }, { crossOrigin: 'Anonymous' });
-
 
     });
 
@@ -286,35 +283,17 @@ $(document).ready(function(){
       }
 
     });
+
     // clears the stickers, drawings & texts off upon clicking
     $('#clear').on('click', function(){
-      // canvas.clearContext(imgInstance);
-      // canvas.clearContext( testSticker );
       // canvas.remove( canvas.getActiveObject() );
-
       canvas.forEachObject(function(obj){
         canvas.remove(obj);
-        });
-
-
-      //
+      });
       // var objects = canvas._objects;
       // for (var i = 0; i < objects.length; i++) {
       //   canvas.remove( objects[i] );
       // }
-
-    });
-
-    // saves the background image (photo taken) together with the stickers, etc upon clicking. Stickers, etc can no longer be moved
-    $('#download').on('click', function(){
-      canvas.isDrawingMode = false;
-
-    });
-
-    // places the downloaded image into the gallery
-    $('#upload').on('click', function(){
-
-
     });
 
     // brings back the webcam

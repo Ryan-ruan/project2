@@ -49,9 +49,9 @@
     <div class="eight wide center aligned column">
 
       <div class="ui buttons">
-        <button class="ui button" id ='Clear'><i class="trash outline icon"></i>Clear </button>
+        <button class="ui button" id ='clear'><i class="trash outline icon"></i>Clear </button>
         <button id="download" class="ui button"><i class="save icon"></i>Download </button>
-        <button class="ui button"><i class="camera retro icon"></i>Camera</button>
+        <button id="camera" class="ui button"><i class="camera retro icon"></i>Camera</button>
 
         <!-- ===============Upload image to online gallery================ -->
         <%= form_for Post.new, html: {multipart: true} do |f| %>
