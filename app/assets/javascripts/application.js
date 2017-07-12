@@ -15,4 +15,5 @@
 //= require webcam
 //= require fabric
 //= require semantic-ui
+//= require tracking
 //= require_tree .
