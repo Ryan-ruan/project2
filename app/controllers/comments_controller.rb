@@ -1,51 +1,40 @@
 class CommentsController < ApplicationController
   before_action :find_post
-  before_action :find_comment, only: [:destroy, :edit, :update, :comment_owner]
-  before_action :comment_owner, only: [:destroy, :edit, :update]
 
   def create
-    @comment = @post.comments.create(params[:comment].permit(:context))
-    @comment.user_id = @current_user.id
+    @comment = @post.comments.create(params[:comment].permit(:name, :context))
+
+    if params[:comment][:name].present?
+      @comment.name = params[:comment][:name]
+      @comment.avatar = "https://api.adorable.io/avatars/100/#{@comment.name}"
+    elsif @current_user.present?
+      @comment.name = @current_user.name
+      @comment.avatar = @current_user.avatar
+    else
+      @comment.name = "Anonymous"
+      @comment.avatar = "https://api.adorable.io/avatars/100/anonymous.png"
+    end
+
     @comment.save
 
     if @comment.save
       redirect_to post_path(@post)
     else
-      render 'new'
+      render 'comments/_form'
     end
   end
 
-  def edit
-
-  end
-
-  def update
-    if @comment.update(params[:comment].permit(:context))
-      redirect_to post_path(@post)
-    else
-      render 'edit'
-    end
-  end
 
   def destroy
+    @comment = @post.comments.find(params[:id])
     @comment.destroy
     redirect_to post_path(@post)
   end
 
-  private
 
+  private
   def find_post
     @post = Post.find(params[:post_id])
   end
 
-  def find_comment
-    @comment = @post.comments.find(params[:id])
-  end
-
-  def comment_owner
-    unless @current_user.id == @comment.user_id
-      flash[:notice] = "You have no access to this comment!"
-      redirect_to @post
-    end
-  end
 end
