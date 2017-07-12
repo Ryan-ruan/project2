@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+
   before_action :fetch_user
 
   private
@@ -15,5 +16,10 @@ class ApplicationController < ActionController::Base
   def check_if_admin
     redirect_to login_path unless @current_user.present? && @current_user.is_admin?
   end
+
+  def redirect_to_https
+    redirect_to :protocol => "https://" unless (request.ssl? || request.local?)
+  end
+
 
 end

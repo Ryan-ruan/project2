@@ -1,11 +1,18 @@
-<h2>Sign Up</h2>
-
-<% if @user.errors.any? %>
-<ol>
-  <% @user.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-</ol>
-<% end %>
+<h2 class="ui centered header">Sign Up</h2>
 
 <%= render partial: 'form' %>
+
+<% if @user.errors.any? %>
+<div class="ui two column centered grid">
+  <div class="column">
+    <div class="ui error message">
+      <i class="close icon"></i>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<% end %>

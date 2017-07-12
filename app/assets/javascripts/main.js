@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 var canvas;
+=======
+
+
+>>>>>>> f853c1f4c5450dcc5607601bcf0c6527b19de3d1
 $(document).ready(function(){
   console.log("all good");
 
@@ -28,7 +33,7 @@ $(document).ready(function(){
      canvas = this.__canvas = new fabric.Canvas('my_canvas', {
       width: 640,
       height: 480,
-      // isDrawingMode: true
+
     });
 
     // define a function to save the sanpshot onto a canvas we placed on html page
@@ -37,6 +42,7 @@ $(document).ready(function(){
 
         canvas.setBackgroundImage(data_uri, canvas.renderAll.bind(canvas));
       });
+<<<<<<< HEAD
       console.log('filters:', filters);
 
       // loop over settings in CSS filters object
@@ -51,18 +57,23 @@ $(document).ready(function(){
           canvas.renderAll();
         });
       // }
+=======
+
+>>>>>>> f853c1f4c5450dcc5607601bcf0c6527b19de3d1
 
     }
 
-        // canvas.renderAll.bind(canvas);
 
+<<<<<<< HEAD
 
 // ==============filters functions  - ryan ============
 
   var unselectedClass = 'basic';
+=======
+>>>>>>> f853c1f4c5450dcc5607601bcf0c6527b19de3d1
 
-  var filters = {};
 
+<<<<<<< HEAD
   var applyFilters = function(filters, id) {
     var $elem = $(id);
     var filter_val = '';
@@ -91,6 +102,12 @@ $(document).ready(function(){
     $( '#my_camera' ).css('filter', '');
     var filters = {};
   };
+=======
+    var selectedClass = 'basic';
+
+    // filters object for translation
+    var filters = {
+>>>>>>> f853c1f4c5450dcc5607601bcf0c6527b19de3d1
 
 
   var hideFilters = function () {
@@ -98,6 +115,7 @@ $(document).ready(function(){
     $('.filters_buttons').hide();
   };
 
+<<<<<<< HEAD
   // ==============filters buttons  - ryan ============
 
   $('#filters_button button').on('click', function(){
@@ -184,6 +202,112 @@ $(document).ready(function(){
     }
     applyFilters(filters, "#my_camera");
   });
+=======
+    };
+
+
+    // apply css Filters (live preview)
+    var applyFilters = function (filters, id) {
+      var $elem = $(id);
+      for(var key in filters){
+        var val = filters[key];
+        var css_val = '';
+        if(val.length){
+          var css_val = key + '(' + val + ')';
+        }
+        $elem.css('filter', css_val);
+      }
+    }
+
+    // toggle filter options buttons
+    $('#filters_button button').on('click', function(){
+      $('#filters_button').hide();
+      $('.filters_buttons').show();
+    });
+
+    // reset all the filters in preview
+    $('#Reset').on('click', function(){
+    });
+
+
+    // click buttons to apply css filters in live preview
+
+    $('#Blur').on('click', function(){
+      $(this).toggleClass(unselectedClass);
+      if( $(this).hasClass(unselectedClass) ){
+        filters.blur ='0';
+      } else {
+        filters.blur = "3px";  // {css: '3px', fabric: '100'}
+      }
+      applyFilters(filters, "#my_camera");
+    });
+
+
+    $('#BnW').on('click', function(){
+      $(this).toggleClass(unselectedClass);
+      if( $(this).hasClass(unselectedClass) ){
+        filters.grayscale = '0%';
+      } else {
+        filters.grayscale = "100%";
+      }
+      applyFilters(filters, "#my_camera");
+    });
+
+
+    $('#Bright').on('click', function(){
+      $(this).toggleClass(unselectedClass);
+      if( $(this).hasClass(unselectedClass) ){
+        filters.brightness = '100%';
+      } else {
+        filters.brightness = "300%";
+      }
+      applyFilters(filters, "#my_camera");
+    });
+
+    $('#Hue').on('click', function(){
+      $(this).toggleClass(unselectedClass);
+      if( $(this).hasClass(unselectedClass) ){
+        filters["hue-rotate"] = '0deg';
+      } else {
+        filters["hue-rotate"] = "180deg";
+      }
+      applyFilters(filters, "#my_camera");
+    });
+
+
+    $('#Saturate').on('click', function(){
+      $(this).toggleClass(unselectedClass);
+      if( $(this).hasClass(unselectedClass) ){
+        filters.saturate = '100%';
+      } else {
+        filters.saturate = "500%";
+      }
+      applyFilters(filters, "#my_camera");
+    });
+
+    $('#Sepia').on('click', function(){
+      $(this).toggleClass(unselectedClass);
+      if( $(this).hasClass(unselectedClass) ){
+        filters.sepia = '0%';
+      } else {
+        filters.sepia = "400%";
+      }
+      applyFilters(filters, "#my_camera");
+    });
+
+
+    $('#Contrast').on('click', function(){
+      $(this).toggleClass(unselectedClass);
+      if( $(this).hasClass(unselectedClass) ){
+        filters.contrast = '100%';
+      } else {
+        filters.contrast = "400%";
+      }
+      applyFilters(filters, "#my_camera");
+    });
+
+
+>>>>>>> f853c1f4c5450dcc5607601bcf0c6527b19de3d1
 
 
 
@@ -191,6 +315,7 @@ $(document).ready(function(){
 
 
 
+    // ======== buttons for camera view ============
 
 
     $('#pre_take_buttons button').on('click', function(){
@@ -345,7 +470,6 @@ $(document).ready(function(){
       $('#editor_ui').hide();
     });
 
-
     //======================Save to computer ==========================
 
     $('#download').click(function() {
@@ -367,5 +491,38 @@ $(document).ready(function(){
 
 
   } // main.js will only execute on posts/new page
+
+  // =================================================================
+  // following code runs when on posts#show page (posts/:id), for like button
+
+
+
+  if( $('body.posts.show').length ){
+
+    console.log("We're on posts#show page(posts/:id)");
+    var post_like_counts = 9; // replace this on html with post model's field, use ajax to fetch
+
+    var likeCounts = post_like_counts
+
+    $('#heart-icon').on('click', function(){
+      console.log(likeCounts);
+
+      $(this).toggleClass('orange');
+
+      if( $(this).hasClass('orange') ) {
+        likeCounts += 1
+      } else {
+        likeCounts -= 1
+      }
+
+      $('#like-counts').html(likeCounts);
+
+    });
+
+
+
+  } // will only execute on posts/new page
+
+
 
 }); // end of document ready

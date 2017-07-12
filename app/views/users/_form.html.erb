@@ -1,25 +1,38 @@
-<%= form_for @user,html:{multipart:true} do |f| %>
+<div class="ui two column centered grid">
+  <div class="column">
+    <div class="ui raised container segment">
+      <%= form_for @user,html:{multipart:true, class: 'ui form'} do |f| %>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+      </div>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
+      <div class="field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+      </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <br>
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <br>
+      <div class="field">
+        <%= f.label :avatar %>
+        <%= f.cl_image_upload :avatar %>
+      </div>
 
-  <%= f.label :avatar %>
-  <%= f.cl_image_upload :avatar %>
-  <br>
+      <button class="ui olive labeled icon button">
+        Create New Account
+        <i class="add icon"></i>
+      </button>
 
-  <%= f.submit %>
-
-<% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
