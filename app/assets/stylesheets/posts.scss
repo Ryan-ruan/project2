@@ -3,6 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #toolbar {
-  padding: 1em
+  padding: 1em;
   // margin-left: -15px;
+}
+
+#track-canvas{
+  position: absolute !important;
+  z-index: 10000 !important;
+  width: 640px;
+  height: 480px;
+  top: 0;
+  left: 0;
+  border-left: 2px solid red;
+  // transform: scaleX(-1);
+}
+
+video{
+  z-index: 0 !important;
+  // position: absolute !important;
 }

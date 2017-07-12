@@ -1,29 +1,46 @@
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
 @import "semantic-ui";
 
-body {
-  background: linear-gradient(213deg, #b5cc18, #f2711c);
-  background-size: 200% 200%;
-
-  -webkit-animation: AnimationName 30s ease infinite;
-  -moz-animation: AnimationName 30s ease infinite;
-  animation: AnimationName 30s ease infinite;
-
-  @-webkit-keyframes AnimationName {
-      0%{background-position:88% 0%}
-      50%{background-position:13% 100%}
-      100%{background-position:88% 0%}
-  }
-  @-moz-keyframes AnimationName {
-      0%{background-position:88% 0%}
-      50%{background-position:13% 100%}
-      100%{background-position:88% 0%}
-  }
-  @keyframes AnimationName {
-      0%{background-position:88% 0%}
-      50%{background-position:13% 100%}
-      100%{background-position:88% 0%}
-  }
-}
+// body {
+//   background: linear-gradient(213deg, #b5cc18, #f2711c);
+//   background-size: 200% 200%;
+//
+//   -webkit-animation: AnimationName 30s ease infinite;
+//   -moz-animation: AnimationName 30s ease infinite;
+//   animation: AnimationName 30s ease infinite;
+//
+//   @-webkit-keyframes AnimationName {
+//       0%{background-position:88% 0%}
+//       50%{background-position:13% 100%}
+//       100%{background-position:88% 0%}
+//   }
+//   @-moz-keyframes AnimationName {
+//       0%{background-position:88% 0%}
+//       50%{background-position:13% 100%}
+//       100%{background-position:88% 0%}
+//   }
+//   @keyframes AnimationName {
+//       0%{background-position:88% 0%}
+//       50%{background-position:13% 100%}
+//       100%{background-position:88% 0%}
+//   }
+// }
 
 
 
