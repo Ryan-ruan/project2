@@ -1,5 +1,3 @@
-
-
 $(document).ready(function(){
   console.log("all good");
 
@@ -209,9 +207,13 @@ $(document).ready(function(){
       fabric.Image.fromURL(url, function(oImg) {
         oImg.scale(0.5);
         canvas.add(oImg);
+        // testSticker = oImg;
+        // console.log('added:', testSticker);
       });
-
-      canvas.add(imgInstance);
+      // console.log('HERE');
+      // console.log('image instance: ', imgInstance);
+      // canvas.add(imgInstance);
+      // console.log('HERE2');
     });
 
     // ------------ text tab -- Lingxiao ------------
@@ -283,8 +285,42 @@ $(document).ready(function(){
     });
     // clears the stickers, drawings & texts off upon clicking
     $('#clear').on('click', function(){
-      canvas.freeDrawingBrush.clear();
+      // canvas.clearContext(imgInstance);
+      // canvas.clearContext( testSticker );
+      // canvas.remove( canvas.getActiveObject() );
 
+      canvas.forEachObject(function(obj){
+        canvas.remove(obj);
+        });
+
+
+      //
+      // var objects = canvas._objects;
+      // for (var i = 0; i < objects.length; i++) {
+      //   canvas.remove( objects[i] );
+      // }
+
+    });
+
+    // saves the background image (photo taken) together with the stickers, etc upon clicking. Stickers, etc can no longer be moved
+    $('#download').on('click', function(){
+      canvas.isDrawingMode = false;
+
+    });
+
+    // places the downloaded image into the gallery
+    $('#upload').on('click', function(){
+
+
+    });
+
+    // brings back the webcam
+    $('#camera').on('click', function(){
+      Webcam.attach( '#my_camera' );
+      $('#webcamjs').show();
+      $('#pre_take_buttons').show();
+      $('#post_take_buttons').hide();
+      $('#editor_ui').hide();
     });
 
 
