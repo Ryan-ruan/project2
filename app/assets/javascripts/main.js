@@ -389,7 +389,17 @@ $(document).ready(function(){
     console.log("We're on posts#show page(posts/:id)");
 
 
-
+    $.ajax({
+    url: 'https://api.imgur.com/3/image',
+    headers: {
+        'Authorization': 'Client-ID YOUR_CLIENT_ID'
+    },
+    type: 'POST',
+    data: {
+        'image': 'helloworld.jpg'
+    },
+    success: function() { console.log('cool'); }
+});
 
 
 
