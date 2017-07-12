@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  
+
   before_action :fetch_user
 
   private
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_https
-    redirect_to :protocol => "https://"
+    redirect_to :protocol => "https://" unless (request.ssl? || request.local?)
   end
 
 
