@@ -1,5 +1,35 @@
 @import "semantic-ui";
 
+body {
+  background: linear-gradient(213deg, #b5cc18, #f2711c);
+  background-size: 200% 200%;
+
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+      0%{background-position:88% 0%}
+      50%{background-position:13% 100%}
+      100%{background-position:88% 0%}
+  }
+  @-moz-keyframes AnimationName {
+      0%{background-position:88% 0%}
+      50%{background-position:13% 100%}
+      100%{background-position:88% 0%}
+  }
+  @keyframes AnimationName {
+      0%{background-position:88% 0%}
+      50%{background-position:13% 100%}
+      100%{background-position:88% 0%}
+  }
+}
+
+
+
+
+
+
 .welcome {
   text-align: center;
   font-size: 25vh;

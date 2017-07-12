@@ -284,6 +284,7 @@ $(document).ready(function(){
 
     });
 
+
     // clears the stickers, drawings & texts off upon clicking
     $('#clear').on('click', function(){
       // canvas.remove( canvas.getActiveObject() );
@@ -304,6 +305,7 @@ $(document).ready(function(){
       $('#post_take_buttons').hide();
       $('#editor_ui').hide();
     });
+
 
     //======================Save to computer ==========================
 
