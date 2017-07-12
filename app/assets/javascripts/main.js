@@ -201,32 +201,35 @@ $(document).ready(function(){
       });
 
 
+
+
+
     // ======== sticker tab - unicar ========
     $('.ui.image').on('click', function() {
       var url = $(this).attr('src');
       fabric.Image.fromURL(url, function(oImg) {
         oImg.scale(0.5);
         canvas.add(oImg);
-        // testSticker = oImg;
-        // console.log('added:', testSticker);
       });
-      // console.log('HERE');
-      // console.log('image instance: ', imgInstance);
-      // canvas.add(imgInstance);
-      // console.log('HERE2');
+
+      }, { crossOrigin: 'Anonymous' });
+
+
     });
+
+
+
 
     // ------------ text tab -- Lingxiao ------------
     // set font color and size
-    var fontColour = $('#font-colour').val();
-    var fontSize = $('#font-size').val();
+    var fontColor = $('#font-color').val();
+    var fontSize = parseInt( $('#font-size').val() );
 
-    $('#font-colour').on('change', function(){
-      fontColour = this.value;
+    $('#font-color').on('change', function(){
+      fontColor = $(this).val();
     });
 
     $('#font-size').on('change', function(){
-      debugger;
       fontSize = $(this).val();
       $('#size-info').text(fontSize);
     });
@@ -236,10 +239,10 @@ $(document).ready(function(){
         width: 300,
         top: 240,
         left: 80,
-        fontSize: parseInt(fontSize),
+        fontSize: fontSize,
         textAlign: 'center',
         fixedWidth: 150,
-        fill: fontColour,
+        fill: fontColor,
         fontFamily: 'Avenir'
       });
 
@@ -321,6 +324,24 @@ $(document).ready(function(){
       $('#pre_take_buttons').show();
       $('#post_take_buttons').hide();
       $('#editor_ui').hide();
+    });
+
+    //======================Save to computer ==========================
+
+    $('#download').click(function() {
+      window.location = canvas.toDataURL("image/png");
+    }); // save the image to computer
+
+    //======================Upload to gallery ==========================
+
+
+    $('#new_post').submit(function () {
+
+      var dataurl = canvas.toDataURL('image/png');
+      $('#image').val( dataurl );
+
+      console.log('GOT HERE');
+
     });
 
 

@@ -47,10 +47,22 @@
   <!-- function buttons view -->
   <div id="menu" class="centered row">
     <div class="eight wide center aligned column">
-      <button class="ui button" id="clear"><i class="trash outline icon"></i>Clear </button>
-      <button class="ui button" id="download"><i class="save icon"></i>Download </button>
-      <button class="ui button" id="upload"><i class="cloud upload icon"></i>Upload</button>
-      <button class="ui button" id="camera"><i class="camera retro icon"></i>Camera</button>
+
+      <div class="ui buttons">
+        <button class="ui button" id ='Clear'><i class="trash outline icon"></i>Clear </button>
+        <button id="download" class="ui button"><i class="save icon"></i>Download </button>
+        <button class="ui button"><i class="camera retro icon"></i>Camera</button>
+
+        <!-- ===============Upload image to online gallery================ -->
+        <%= form_for Post.new, html: {multipart: true} do |f| %>
+        <% f.label :file %>
+        <%= hidden_field_tag :image %>
+
+        <button class="ui button"><i class="cloud upload icon"></i>Upload</button>
+        <% end %>
+        <!-- ===============Upload image to online gallery================ -->
+      </div>
+
     </div>
   </div>
 
@@ -84,6 +96,7 @@
                     <img id="sticker10" class="ui image" src="http://i.imgur.com/2bTuQ2N.png">
                     <img id="sticker10" class="ui image" src="http://i.imgur.com/n6luHhJ.png">
                     <img id="sticker10" class="ui image" src="http://i.imgur.com/9pxlO69.png">
+                    <img id="sticker11" class="ui image" src="/assets/asset.png">
                   </div>
                 </div>
                 <!-- brush tab -->
