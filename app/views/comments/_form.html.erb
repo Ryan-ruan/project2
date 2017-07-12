@@ -1,4 +1,16 @@
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <%= f.text_area :context %>
-  <%= f.submit %>
-<% end%>
+<div class="ui reply form segment">
+  <%= form_for([@post, @post.comments.build]) do |f| %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :context %>
+      <%= f.text_area :context %>
+    </div>
+
+    <%= f.submit class: 'ui olive button' %>
+  <% end %>
+</div>
