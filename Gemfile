@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'acts_as_votable'
+
 gem 'cloudinary'
 gem "bcrypt"
 gem 'rails_12factor'
