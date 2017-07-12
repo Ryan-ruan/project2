@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   delete '/login'  => 'session#destroy'
 
 
-  post '/liked' => 'posts#liked'
-
   resources :users
 
   resources :posts do

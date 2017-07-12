@@ -389,33 +389,6 @@ $(document).ready(function(){
     console.log("We're on posts#show page(posts/:id)");
 
 
-    var likeCounts = parseInt($('#like-counts').html());
-    console.log("This post's like-counts: ", likeCounts);
-
-    $('#heart-icon').on('click', function(){
-
-      $(this).toggleClass('orange');
-
-      if( $(this).hasClass('orange') ) {
-        likeCounts += 1
-      } else {
-        likeCounts -= 1
-      }
-
-      likeCountsString = String(likeCounts);
-      console.log(likeCountsString);
-
-      $.post(
-        '/liked',
-        {like_counts: likeCountsString},
-        function(data, status){
-          $('#like-counts').html(likeCounts);
-          console.log("Liked");
-        }
-      );
-
-    });
-
 
 
 
