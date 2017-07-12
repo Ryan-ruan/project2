@@ -15,22 +15,40 @@ class PostsController < ApplicationController
 
       redirect_to post_path( p )
     end
-
-
   end
+
+
+
 
   def index
     @posts = Post.all
+    
+    respond_to do |format|
+      format.html {}
+      format.json {  render json: @posts }
+    end
   end
 
   def show
     @post = Post.find params['id']
     @comments = Comment.where(post_id: @post).order("created_at DESC")
+
+    respond_to do |format|
+      format.html {}
+      format.json {  render json: @post }
+    end
+
   end
 
   def destroy
     @post = Post.find params['id']
-    @post.destory
+    @post.destroy
     redirect_to user_path(@current_user)
+  end
+
+  def upvote
+    @post = Post.find params['id']
+    @post.upvote_from @current_user
+    redirect_to posts_path
   end
 end
