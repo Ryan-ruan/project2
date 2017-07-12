@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+  before_action :redirect_to_https, only: :new
   before_action :check_if_logged_in, only: [:new, :create, :destroy]
 
   def new

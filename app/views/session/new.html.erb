@@ -1,17 +1,41 @@
-<div class ="login">
+<div class ="ui three column middle aligned center aligned grid">
+
+  <div class="column">
+
+    <h2 class="ui grey header">Log-in to your account</h2>
+    <%= form_tag(login_path, class: 'ui large form')  do  %>
+     <div class="ui padded stacked segment">
+       <div class="field">
+         <div class="ui left icon input">
+           <i class="user icon"></i>
+           <%= email_field_tag :email, nil, placeholder: "E-mail address" %>
+         </div>
+       </div>
+
+       <div class="field">
+         <div class="ui left icon input">
+           <i class="lock icon"></i>
+           <%=  password_field_tag :password, nil, placeholder: "Password" %>
+         </div>
+       </div>
+
+       <%= submit_tag "Login", class: 'ui fluid button olive' %>
+
+     </div>
+    <% end %>
+
+    <% if flash[:error].present? %>
+      <div class="ui error message">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+
+    <div class="ui message">
+      New to us?
+      <a href="/users/new">Sign Up</a>
+    </div>
 
 
-<%= form_tag login_path do  %>
 
-  <%= label_tag :email %>
-  <%= email_field_tag :email %>
-  <br>
-
-  <%= label_tag :password %>
-  <%=  password_field_tag :password %>
-  <br>
-
-  <%= submit_tag "login" %>
-
-<% end %>
+  </div>
 </div>

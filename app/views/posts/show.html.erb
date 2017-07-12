@@ -1,8 +1,43 @@
+<div class="ui container segment">
+  <div class="image">
+    <%= cl_image_tag(@post.image, class: "ui centered rounded image")  %>
+  </div>
+  <div class="ui divider"></div>
 
-<div class="image">
-  <%= cl_image_tag(@post.image, class: "ui centered rounded image")  %>
+  <!-- <div class="ui four bottom attached buttons"> -->
+
+
+    <div class="ui labeled button" tabindex="0">
+      <div class="ui olive button">
+        <i id="heart-icon" class="heart icon"></i> Like
+      </div>
+      <a id="like-counts" class="ui basic olive left pointing label">
+        9
+      </a>
+    </div>
+
+    <button class="ui olive basic button">
+      <i class="facebook icon"></i>
+      Share
+    </button>
+
+    <%= link_to "Create One", new_post_path, class: 'ui olive basic button' %>
+
+    <% if @current_user == @post.user %>
+      <%= link_to "Delete", post_path(@post), method: :delete, data:{confirm: 'Are you sure?'}, class:'ui orange basic button' %>
+    <% end %>
+
+  <!-- </div> -->
 </div>
 
+<div class="ui container segment">
+  <h2 class="ui dividing header">
+    <%= pluralize(@post.comments.count, "Comment") %>
+  </h2>
+  <%= render @post.comments %>
+</div>
 
-
-<%= render 'comments/comment' %>
+<div class="ui olive container segment">
+  <h3>Add a Comment:</h3>
+  <%= render 'comments/form' %>
+</div>

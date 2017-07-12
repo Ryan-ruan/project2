@@ -1,2 +1,40 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="ui center aligned text container">
+  <h1>Gallery</h1>
+</div>
+
+<div class="ui divider"></div>
+
+  <div class="ui relaxed stackable grid container">
+    <div class="doubling four column row">
+      <% @posts.each do |p| %>
+        <div class="column">
+
+          <div class="ui centered card">
+
+            <div class="extra content">
+              <div class="right floated meta">14h</div>
+              <%= link_to cl_image_tag(p.user.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true), user_path(p.user), class: "ui avatar image"%> <%= link_to p.user.name, user_path(p.user) %>
+            </div>
+
+            <div class="ui image">
+              <%= link_to cl_image_tag(p.image, :width=>320, :height=>240, :crop=>"scale", :secure=>true), post_path( p )%>
+            </div>
+
+            <div class="content">
+              <span class="right floated">
+                <i class="heart outline like icon"></i>
+                17 likes
+              </span>
+
+              <i class="comment icon"></i>
+              3 comments
+            </div>
+
+          </div>
+
+          <div class="ui container"></div>
+
+        </div>
+      <% end %>
+    </div>
+  </div>

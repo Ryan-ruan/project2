@@ -14,8 +14,8 @@ u2 = User.create name:"robotpanda", email:"robotpanda@gmail.com", password:"chic
 
 Post.destroy_all
 
-p1 = Post.create image:"https://fillmurray.com/200/200"
-p2 = Post.create image:"https://fillmurray.com/200/300"
+p1 = Post.create image:"https://fillmurray.com/320/240"
+p2 = Post.create image:"https://fillmurray.com/320/240"
 
 u1.posts << p1
 u2.posts << p2
