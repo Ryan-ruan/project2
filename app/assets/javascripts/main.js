@@ -299,6 +299,9 @@ $(document).ready(function(){
 
     // brings back the webcam
     $('#camera').on('click', function(){
+      canvas.forEachObject(function(obj){
+        canvas.remove(obj);
+      });
       Webcam.attach( '#my_camera' );
       $('#webcamjs').show();
       $('#pre_take_buttons').show();
