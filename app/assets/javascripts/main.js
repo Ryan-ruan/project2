@@ -36,23 +36,34 @@ $(document).ready(function(){
 
 
     ///////////// start tracking code
+    var img = document.createElement('img');
+    img.src = '/assets/luke.png';
+    console.log(img.src);
 
-    var tracker = new tracking.ObjectTracker('face');
-    //  tracker.setInitialScale(4);
-     tracker.setStepSize(2);
-     tracker.setEdgesDensity(0.1);
-     tracking.track('#webcam_video', tracker, { camera: true });
-     tracker.on('track', function(event) {
-       context.clearRect(0, 0, trackCanvas.width, trackCanvas.height);
-       event.data.forEach(function(rect) {
-         context.strokeStyle = '#a64ceb';
-         context.strokeRect(trackCanvas.width - rect.x - rect.width, rect.y, rect.width, rect.height);
-         context.font = '11px Helvetica';
-         context.fillStyle = "#fff";
-         context.fillText('x: ' + (trackCanvas.width - rect.x - rect.width) + 'px', rect.x + rect.width + 5, rect.y + 11);
-         context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+
+
+      var tracker = new tracking.ObjectTracker('face');
+       tracker.setInitialScale(4);
+       tracker.setStepSize(0.5);
+       tracker.setEdgesDensity(0.1);
+       tracking.track('#webcam_video', tracker, { camera: true });
+       tracker.on('track', function(event) {
+         context.clearRect(0, 0, trackCanvas.width, trackCanvas.height);
+         event.data.forEach(function(rect) {
+          //  context.strokeStyle = '#a64ceb';
+          //  context.strokeRect(trackCanvas.width - rect.x - rect.width, rect.y, rect.width, rect.height);
+          //  context.font = '11px Helvetica';
+          //  context.fillStyle = "#fff";
+          //  context.fillText('x: ' + (trackCanvas.width - rect.x - rect.width) + 'px', rect.x + rect.width + 5, rect.y + 11);
+          //  context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+
+          context.drawImage(img, trackCanvas.width - rect.x - rect.width - 10, rect.y, rect.width * 1.2, rect.height * 1.2);
+         });
        });
-     });
+
+
+
+
 
 
     ////////////////////// end tracking code
@@ -376,12 +387,12 @@ $(document).ready(function(){
   if( $('body.posts.show').length ){
 
     console.log("We're on posts#show page(posts/:id)");
-    var post_like_counts = 9; // replace this on html with post model's field, use ajax to fetch
 
-    var likeCounts = post_like_counts
+
+    var likeCounts = parseInt($('#like-counts').html());
+    console.log("This post's like-counts: ", likeCounts);
 
     $('#heart-icon').on('click', function(){
-      console.log(likeCounts);
 
       $(this).toggleClass('orange');
 
@@ -391,9 +402,23 @@ $(document).ready(function(){
         likeCounts -= 1
       }
 
-      $('#like-counts').html(likeCounts);
+      likeCountsString = String(likeCounts);
+      console.log(likeCountsString);
+
+      $.post(
+        '/liked',
+        {like_counts: likeCountsString},
+        function(data, status){
+          $('#like-counts').html(likeCounts);
+          console.log("Liked");
+        }
+      );
 
     });
+
+
+
+
 
 
 

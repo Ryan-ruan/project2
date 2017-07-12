@@ -15,12 +15,19 @@ class PostsController < ApplicationController
 
       redirect_to post_path( p )
     end
-
-
   end
+
+
+
+
+
 
   def index
     @posts = Post.all
+    respond_to do |format|
+      format.html {}
+      format.json {  render json: @posts }
+    end
   end
 
   def show
@@ -30,7 +37,13 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find params['id']
-    @post.destory
+    @post.destroy
     redirect_to user_path(@current_user)
   end
+
+  private
+  def post_params
+    params.require(:post).permit(:like_counts)
+  end
+
 end
