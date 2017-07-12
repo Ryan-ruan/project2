@@ -1,3 +1,4 @@
+var canvas;
 $(document).ready(function(){
   console.log("all good");
 
@@ -57,7 +58,7 @@ $(document).ready(function(){
 
     ////////////////////// end tracking code
 
-    var canvas = this.__canvas = new fabric.Canvas('my_canvas', {
+    canvas = this.__canvas = new fabric.Canvas('my_canvas', {
       width: 640,
       height: 480,
 
@@ -66,38 +67,92 @@ $(document).ready(function(){
     // define a function to save the sanpshot onto a canvas we placed on html page
     function take_snap_canvas(){
       Webcam.snap( function(data_uri){
-
         canvas.setBackgroundImage(data_uri, canvas.renderAll.bind(canvas));
       });
 
+      console.log(canvas.backgroundImage);
+      applyFabricFilters();
+      canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
 
     }
 
+    var applyFabricFilters = function(){
+      if (filters.grayscale) {
+
+        var filter = new fabric.Image.filters.Grayscale({
+          grayscale: 500
+        });
+
+        canvas.backgroundImage.filters.push(filter);
+        // canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
+      }
+
+      if (filters.brightness) {
+
+        var filter = new fabric.Image.filters.Brightness({
+          brightness: 300
+        });
+        canvas.backgroundImage.filters.push(filter);
+        // canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
+      }
+
+      if (filters.saturate) {
+
+        var filter = new fabric.Image.filters.Saturate({
+          saturate: 300
+        });
+        canvas.backgroundImage.filters.push(filter);
+        // canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
+      }
+
+      if (filters.sepia) {
+
+        var filter = new fabric.Image.filters.Sepia();
+        canvas.backgroundImage.filters.push(filter);
+        // canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
+      }
+
+      if (filters.contrast) {
+
+        var filter = new fabric.Image.filters.Contrast({
+          contrast: 100
+        });
+        canvas.backgroundImage.filters.push(filter);
+        // canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
+      }
+    }
 
 
-
-    var selectedClass = 'basic';
+    var unselectedClass = 'basic';
 
     // filters object for translation
-    var filters = {
-
-
-
-    };
+    var filters = {};
 
 
     // apply css Filters (live preview)
     var applyFilters = function (filters, id) {
       var $elem = $(id);
+      var css_val = '';
       for(var key in filters){
+        console.log(filters);
         var val = filters[key];
-        var css_val = '';
         if(val.length){
-          var css_val = key + '(' + val + ')';
+           css_val += key + '(' + val + ')';
         }
-        $elem.css('filter', css_val);
       }
+        console.log(css_val);
+      $elem.css('filter', css_val);
     }
+
+    var resetFilters = function(){
+      $('.filters_buttons').children().addClass("basic");
+      $('#my_camera').css('filter','');
+    };
+
+    var hideFilters = function () {
+      $('#filters_button').show();
+      $('.filters_buttons').hide();
+    };
 
     // toggle filter options buttons
     $('#filters_button button').on('click', function(){
@@ -107,29 +162,32 @@ $(document).ready(function(){
 
     // reset all the filters in preview
     $('#Reset').on('click', function(){
+      resetFilters();
     });
 
 
     // click buttons to apply css filters in live preview
 
-    $('#Blur').on('click', function(){
-      $(this).toggleClass(unselectedClass);
-      if( $(this).hasClass(unselectedClass) ){
-        filters.blur ='0';
-      } else {
-        filters.blur = "3px";  // {css: '3px', fabric: '100'}
-      }
-      applyFilters(filters, "#my_camera");
-    });
-
+    // $('#Blur').on('click', function(){
+    //   $(this).toggleClass(unselectedClass);
+    //   if( $(this).hasClass(unselectedClass) ){
+    //     filters.blur ='0';
+    //   } else {
+    //     filters.blur = "3px";  // {css: '3px', fabric: '100'}
+    //   }
+    //   applyFilters(filters, "#my_camera");
+    // });
+    //
 
     $('#BnW').on('click', function(){
       $(this).toggleClass(unselectedClass);
+      console.log(this);
       if( $(this).hasClass(unselectedClass) ){
         filters.grayscale = '0%';
       } else {
         filters.grayscale = "100%";
       }
+      console.log(filters);
       applyFilters(filters, "#my_camera");
     });
 
@@ -144,15 +202,15 @@ $(document).ready(function(){
       applyFilters(filters, "#my_camera");
     });
 
-    $('#Hue').on('click', function(){
-      $(this).toggleClass(unselectedClass);
-      if( $(this).hasClass(unselectedClass) ){
-        filters["hue-rotate"] = '0deg';
-      } else {
-        filters["hue-rotate"] = "180deg";
-      }
-      applyFilters(filters, "#my_camera");
-    });
+    // $('#Hue').on('click', function(){
+    //   $(this).toggleClass(unselectedClass);
+    //   if( $(this).hasClass(unselectedClass) ){
+    //     filters["hue-rotate"] = '0deg';
+    //   } else {
+    //     filters["hue-rotate"] = "180deg";
+    //   }
+    //   applyFilters(filters, "#my_camera");
+    // });
 
 
     $('#Saturate').on('click', function(){
@@ -208,6 +266,9 @@ $(document).ready(function(){
     $('#cancel').on('click', function() {
       // cancel preview freeze and return to live camera feed
   		Webcam.unfreeze();
+      resetFilters();
+      hideFilters();
+
 
   		// swap buttons back
       $('#pre_take_buttons').show();
@@ -230,12 +291,7 @@ $(document).ready(function(){
     // switch between tabs
     $('.menu .item').tab();
 
-    // ==============functions buttons - BACK TO CAMERA - ryan ============
-    $("#Camera").on("click",function(){
-      $('#webcamjs').show();
-      Webcam.attach( '#my_camera' );
-      $('#editor_ui').hide();
-      });
+
 
 
 
@@ -344,6 +400,8 @@ $(document).ready(function(){
       $('#pre_take_buttons').show();
       $('#post_take_buttons').hide();
       $('#editor_ui').hide();
+      resetFilters();
+      hideFilters();
     });
 
     //======================Save to computer ==========================
