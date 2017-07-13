@@ -12,8 +12,9 @@
           <div class="ui centered card">
 
             <div class="extra content">
-              <div class="right floated meta">14h</div>
               <%= link_to cl_image_tag(p.user.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true), user_path(p.user), class: "ui avatar image"%> <%= link_to p.user.name, user_path(p.user) %>
+              <div class="right floated meta"><%= time_ago_in_words(p.created_at) %></div>
+              
             </div>
 
             <div class="ui image">
@@ -27,7 +28,7 @@
               </span>
 
               <i class="comment icon"></i>
-              3 comments
+              <%= pluralize(p.comments.count, "Comment") %>
             </div>
 
           </div>

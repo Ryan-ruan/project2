@@ -1,6 +1,7 @@
 
 $('.like_post').on('ajax:success', function(e, data, status, xhr){
   console.log('got here');
+
   $(this).parent().parent().find('#like-counts').html('<%= escape_javascript @post.get_upvotes.size.to_s %>');
-  $("#heart-icon").removeClass("outline");
+  $('#heart-icon').removeClass("outline")
 });

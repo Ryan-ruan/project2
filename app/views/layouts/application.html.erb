@@ -17,24 +17,67 @@
 
     <nav>
 
-    <div class="ui container">
-      <div class="ui secondary menu">
-        <%= button_to "Gallery", posts_path, :method => :get, class: 'ui inverted purple button item' %>
-        <div class="right menu">
-          <% unless @current_user.present? %>
-            <%= button_to "Login", login_path, class: 'ui teal basic button item' %>
-            <%= button_to "Signup", new_user_path, class: 'ui teal basic button item' %>
-          <% else %>
-          <div class="item">
-            Welcome,
-            <%= link_to @current_user.name, user_path(@current_user) %>
+      <div class="ui container">
+        <div class="ui secondary menu">
+          <%= button_to "Gallery", posts_path, :method => :get, class: 'ui inverted purple button item' %>
+          <div class="right menu">
+
+
+            <!-- right pointing dropdown -->
+            <div class="ui up pointing dropdown icon button">
+              <i class="idea icon"></i>
+              <div class="menu">
+
+                  <% unless @current_user.present? %>
+                    <div class="item">
+                      <%= link_to login_path do %>
+                        <i class="user icon"></i>
+                        Login
+                      <% end %>
+                    </div>
+                    <div class="item">
+                      <%= link_to new_user_path do %>
+                        <i class="edit icon"></i>
+                        Signup
+                      <% end %>
+                    </div>
+
+                  <% else %>
+                    <div class="item">
+                      <%= link_to cl_image_tag(@current_user.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true), user_path(@current_user), class: "ui avatar image"%> <%= link_to @current_user.name, user_path(@current_user) %>
+                    </div>
+                    <div class="item">
+                      <%= link_to login_path, :method => :delete do %>
+                        <i class="power icon"></i>
+                        Logout
+                      <% end %>
+                    </div>
+                    <div class="item">
+                      <i class="send icon"></i>
+                      I am place holder
+                    </div>
+
+                  <% end %>
+
+                <div class="divider"></div>
+
+                <div class="item">
+                  <i class="send icon"></i>
+                  Give Us feedback
+                </div>
+
+              </div>
+            </div>
+
+
+
           </div>
-            <%= button_to "Logout", login_path, :method => :delete, class: 'ui teal basic button item' %>
-          <% end %>
         </div>
       </div>
-    </div>
-  </nav>
+
+
+
+    </nav>
 
 
     <%= yield %>

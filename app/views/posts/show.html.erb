@@ -1,4 +1,14 @@
 <div class="ui container segment">
+
+  <div class="extra content">
+    <%= link_to cl_image_tag(@post.user.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true), user_path(@post.user), class: "ui avatar image"%> <%= link_to @post.user.name, user_path(@post.user) %>
+    <div class="right floated meta">
+      <%= time_ago_in_words(@post.created_at) %> ago
+    </div>
+  </div>
+
+  <div class="ui divider"></div>
+
   <div class="image">
     <%= cl_image_tag(@post.image, class: "ui centered rounded image")  %>
   </div>
@@ -6,51 +16,45 @@
 
   <!-- <div class="ui four bottom attached buttons"> -->
 
-  <div class="content">
-    <a href="" class="author"></a>
-  </div>
-  <%= image_tag(@post.user.avatar, class: "ui avatar image") %>
-  <%= @post.user.name %>
-
-  <span class="date">
-    <%= time_ago_in_words(@post.created_at) %> ago
-  </span>
 
 
-
-
-    <div class="ui labeled button" tabindex="0">
-      <div class="ui olive fluid button">
-        <%= link_to like_post_path(@post), method: :get, remote: true, class: 'like_post' do %>
+  <div class="ui labeled button" tabindex="0">
+    <div class="ui olive fluid button">
+      <%= link_to like_post_path(@post), method: :get, remote: true, class: 'like_post' do %>
+        <% if @current_user.present? %>
+          <% if  @current_user.voted_for? @post %>
+            <i id="heart-icon" class="heart icon"></i> Like
+          <% else %>
+            <i id="heart-icon" class="heart outline icon"></i> Like
+          <% end %>
+        <% else %>
           <i id="heart-icon" class="heart outline icon"></i> Like
         <% end %>
-      </div>
-
-      <a id="like-counts" class="ui basic olive left pointing label">
-        <!-- <#%#= @post.get_upvotes.size %> -->
-      </a>
+      <% end %>
     </div>
 
+    <a id="like-counts" class="ui basic olive left pointing label">
+      <%= @post.get_upvotes.size %>
+    </a>
+  </div>
 
 
-    <%= link_to "Create One", new_post_path, class: 'ui olive basic button' %>
-
-    <% if @current_user == @post.user %>
-      <%= link_to "Delete", post_path(@post), method: :delete, data:{confirm: 'Are you sure?'}, class:'ui orange basic button' %>
-    <% end %>
+  <% if @current_user == @post.user %>
+    <%= link_to "Delete", post_path(@post), method: :delete, data:{confirm: 'Are you sure?'}, class:'ui negative right floated small basic button' %>
+  <% end %>
 
   <!-- </div> -->
 </div>
 
 <div class="ui container segment">
-  <h2 class="ui dividing header">
+  <h3 class="ui dividing header">
     <%= pluralize(@post.comments.count, "Comment") %>
-  </h2>
+  </h3>
   <%= render @post.comments %>
 </div>
 
 <div class="ui olive container segment">
-  <h3>Add a Comment:</h3>
+  <h4>Add a Comment:</h4>
   <%= render 'comments/form' %>
 </div>
 
