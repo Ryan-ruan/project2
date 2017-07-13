@@ -15,6 +15,8 @@
 
     <div class="" style="height:10px"></div>
 
+    <nav>
+
     <div class="ui container">
       <div class="ui secondary menu">
         <%= button_to "Gallery", posts_path, :method => :get, class: 'ui inverted purple button item' %>
@@ -32,10 +34,10 @@
         </div>
       </div>
     </div>
+  </nav>
 
 
-
-      <%= yield %>
+    <%= yield %>
 
 
   </body>

@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One');
 
+
 body {
   background-color: #2B0059;
 }
@@ -11,12 +12,19 @@ body {
   color: #fff;
   text-align: center;
 }
+
+#welcome{
+  
+}
+
 .intro {
-  position: absolute;
+  position: relative !important;
   text-align: center;
   margin-top: 200px;
-  font-size: 45px;
+  font-size: 35px;
+  font-family: 'Roboto', sans-serif;
 }
+
 .pikq {
   font-size: 130px;
   line-height: 1;
