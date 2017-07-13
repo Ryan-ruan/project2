@@ -1,3 +1,85 @@
 // Place all the styles related to the session controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+
+body {
+  background-color: #2B0059;
+}
+.welcome {
+  font-family: 'Fredoka One', cursive;
+  color: #fff;
+  text-align: center;
+}
+.intro {
+  position: absolute;
+  text-align: center;
+  margin-top: 200px;
+  font-size: 45px;
+}
+.pikq {
+  font-size: 130px;
+  line-height: 1;
+  font-family: 'Fredoka One', cursive;
+  font-weight: 700;
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  text-decoration: none;
+  color: #fff;
+  &:before,
+  &:after{
+    display: block;
+    content: 'PikQ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .8;
+  }
+  &:after {
+    color: #f0f;
+    z-index: -2;
+  }
+  &:before {
+    color: #0ff;
+    z-index: -1;
+  }
+  &:hover {
+    &:before {
+      animation: pikq .3s cubic-bezier(.25, .46, .45, .94) both infinite
+    }
+    &:after {
+      animation: pikq .3s cubic-bezier(.25, .46, .45, .94) reverse both infinite
+    }
+  }
+}
+@keyframes pikq {
+    0% {
+        -webkit-transform: translate(0);
+        transform: translate(0)
+    }
+    20% {
+        -webkit-transform: translate(-5px, 5px);
+        transform: translate(-5px, 5px)
+    }
+    40% {
+        -webkit-transform: translate(-5px, -5px);
+        transform: translate(-5px, -5px)
+    }
+    60% {
+        -webkit-transform: translate(5px, 5px);
+        transform: translate(5px, 5px)
+    }
+    80% {
+        -webkit-transform: translate(5px, -5px);
+        transform: translate(5px, -5px)
+    }
+    to {
+        -webkit-transform: translate(0);
+        transform: translate(0)
+    }
+}
