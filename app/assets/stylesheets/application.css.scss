@@ -17,33 +17,16 @@
 
 @import "semantic-ui";
 
-// body {
-//   background: linear-gradient(229deg, #b5cc18, #f2711c);
-//   background-size: 400% 400%;
-//
-//   -webkit-animation: AnimationName 19s ease infinite;
-//   -moz-animation: AnimationName 19s ease infinite;
-//   animation: AnimationName 19s ease infinite;
-//
-//   @-webkit-keyframes AnimationName {
-//       0%{background-position:55% 0%}
-//       50%{background-position:46% 100%}
-//       100%{background-position:55% 0%}
-//   }
-//   @-moz-keyframes AnimationName {
-//       0%{background-position:55% 0%}
-//       50%{background-position:46% 100%}
-//       100%{background-position:55% 0%}
-//   }
-//   @keyframes AnimationName {
-//       0%{background-position:55% 0%}
-//       50%{background-position:46% 100%}
-//       100%{background-position:55% 0%}
-//   }
-// }
-
 body {
-  background-color: #2B0059;
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#010f38+0,7832d2+100 */
+  background: #010f38; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #010f38 0%, #7832d2 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #010f38 0%,#7832d2 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #010f38 0%,#7832d2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#010f38', endColorstr='#7832d2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .welcome {
@@ -58,4 +41,9 @@ body {
 
 .holder .middle {
   height: 100%;
+}
+
+a.like_post {
+  text-decoration: none !important;
+  color: white;
 }

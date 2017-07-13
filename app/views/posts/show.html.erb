@@ -8,17 +8,24 @@
 
 
     <div class="ui labeled button" tabindex="0">
-      <div class="ui olive button">
-        <i id="heart-icon" class="heart icon"></i> Like
+      <div class="ui olive fluid button">
+        <%= link_to like_post_path(@post), method: :get, remote: true, class: 'like_post' do %>
+          <% if @current_user.voted_for? @post %>
+            <i id="heart-icon" class="heart icon"></i> Like
+          <% else %>
+            <i id="heart-icon" class="heart outline icon"></i> Like
+          <% end %>
+        <% end %>
       </div>
+
       <a id="like-counts" class="ui basic olive left pointing label">
-        <%= @post.like_counts %>
+        <%= @post.get_upvotes.size %>
       </a>
     </div>
 
-    <button class="ui olive basic button">
-      <i class="facebook icon"></i>
-      Share
+    <button id="imgur" class="ui olive basic button">
+      <i class="send outline icon"></i>
+      To Imgur
     </button>
 
     <%= link_to "Create One", new_post_path, class: 'ui olive basic button' %>
@@ -42,4 +49,4 @@
   <%= render 'comments/form' %>
 </div>
 
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5965f36bf26d0d08"></script> 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5965f36bf26d0d08"></script>

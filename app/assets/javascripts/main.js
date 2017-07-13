@@ -38,7 +38,8 @@ $(document).ready(function(){
 
     ///////////// start tracking code
     var img = document.createElement('img');
-    img.src = '/assets/luke.png';
+    // img.src = '/assets/cat.png';
+    img.src = '/assets/edge.png';
     console.log(img.src);
 
 
@@ -58,7 +59,10 @@ $(document).ready(function(){
           //  context.fillText('x: ' + (trackCanvas.width - rect.x - rect.width) + 'px', rect.x + rect.width + 5, rect.y + 11);
           //  context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
 
+          //-------- for luke.png test
           context.drawImage(img, trackCanvas.width - rect.x - rect.width - 10, rect.y, rect.width * 1.2, rect.height * 1.2);
+          //--------- for cat.png test
+          // context.drawImage(img, trackCanvas.width - rect.x - rect.width - 60, rect.y-50, rect.width * 1.8, rect.height * 2.0);
          });
        });
 
@@ -81,9 +85,8 @@ $(document).ready(function(){
         canvas.setBackgroundImage(data_uri, canvas.renderAll.bind(canvas));
       });
 
-      console.log(canvas.backgroundImage);
-      applyFabricFilters();
-      canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
+      // applyFabricFilters();
+      // canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
 
     }
 
@@ -310,6 +313,7 @@ $(document).ready(function(){
       $('#webcamjs').hide();
       Webcam.reset();
       $('#editor_ui').show();
+
     });
 
 
@@ -461,7 +465,17 @@ $(document).ready(function(){
     console.log("We're on posts#show page(posts/:id)");
 
 
-
+    $.ajax({
+    url: 'https://api.imgur.com/3/image',
+    headers: {
+        'Authorization': 'Client-ID YOUR_CLIENT_ID'
+    },
+    type: 'POST',
+    data: {
+        'image': 'helloworld.jpg'
+    },
+    success: function() { console.log('cool'); }
+});
 
 
 
