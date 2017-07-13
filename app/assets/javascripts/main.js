@@ -194,9 +194,7 @@ $(document).ready(function(){
     //
 
 
-    $('#myFilter').on('change', function(){
-      var value = $(this).val();
-      $('label').text(value);
+    $('#Bnw').on('click', function(){
       $(this).toggleClass(unselectedClass);
       console.log(this);
       if( $(this).hasClass(unselectedClass) ){
@@ -282,7 +280,7 @@ $(document).ready(function(){
 
     // ======== buttons for camera view ============
 
-    $('#pre_take_buttons button').on('click', function(){
+    $('#snapshot').on('click', function(){
       // freeze camera so user can preview pic
   		Webcam.freeze();
 
