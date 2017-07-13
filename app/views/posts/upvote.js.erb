@@ -1,7 +1,7 @@
-console.log('haha');
-
 
 $('.like_post').on('ajax:success', function(e, data, status, xhr){
+  console.log('got here');
+  debugger;
   $(this).parent().parent().find('#like-counts').html('<%= escape_javascript @post.get_upvotes.size.to_s %>');
-  $(this).children().find('i').removeClass('<%= escape_javascript outline %>')
+  $(this).children().find('i').removeClass("outline")
 });
