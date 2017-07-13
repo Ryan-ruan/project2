@@ -6,6 +6,10 @@ $(document).ready(function(){
   // initialize dropdown for semantic-ui
   $('.ui.dropdown').dropdown();
 
+  // initialize acoordion for semantic-ui
+  $('.ui.accordion')
+  .accordion();
+
   if( $('body.posts.new').length ){
 
 
@@ -35,7 +39,7 @@ $(document).ready(function(){
 
     var isTracking = false;
 
-    $('#facewap').on('click', function(){
+    $('#facewarp').on('click', function(){
       console.log('haha');
       $(this).toggleClass('basic');
       isTracking = !isTracking;
