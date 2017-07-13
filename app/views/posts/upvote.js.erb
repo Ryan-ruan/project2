@@ -1,0 +1,4 @@
+$('.like').bind('ajax:success', function(){
+   $(this).parent().parent().find('.vote_count').html('<%= escape_javascript @post.votes_for.size.to_s %>');
+   $(this).closest('.like_post').hide();
+});
