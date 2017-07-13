@@ -9,6 +9,22 @@ $(document).ready(function() {
         .closest('.message')
         .transition('fade')
       ;
-    })
-  ;
-});
+    });
+
+    $('#upload').on('click', function() {
+      $uploadCrop = $('#upload-demo').croppie({
+        enableExif: true,
+        viewport: {
+            width: 200,
+            height: 200,
+            type: 'circle'
+        },
+        boundary: {
+            width: 300,
+            height: 300
+        }
+      });
+    });
+
+
+}); // end of document ready

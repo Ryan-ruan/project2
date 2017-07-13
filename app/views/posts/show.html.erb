@@ -10,16 +10,12 @@
     <div class="ui labeled button" tabindex="0">
       <div class="ui olive fluid button">
         <%= link_to like_post_path(@post), method: :get, remote: true, class: 'like_post' do %>
-          <% if @current_user.voted_for? @post %>
-            <i id="heart-icon" class="heart icon"></i> Like
-          <% else %>
-            <i id="heart-icon" class="heart outline icon"></i> Like
-          <% end %>
+          <i id="heart-icon" class="heart outline icon"></i> Like
         <% end %>
       </div>
 
       <a id="like-counts" class="ui basic olive left pointing label">
-        <%= @post.get_upvotes.size %>
+        <!-- <#%#= @post.get_upvotes.size %> -->
       </a>
     </div>
 

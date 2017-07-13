@@ -31,7 +31,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find params['id']
     @comments = Comment.where(post_id: @post).order("created_at DESC")
 
     respond_to do |format|
@@ -42,14 +41,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find params['id']
     @post.destroy
     redirect_to user_path(@current_user)
   end
 
   # acts_as_votable
   def upvote
-    @post = Post.find params['id']
+
     @post.upvote_from @current_user
     # redirect_to posts_path
 
