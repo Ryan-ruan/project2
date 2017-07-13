@@ -1,4 +1,4 @@
-$('.like').bind('ajax:success', function(){
-   $(this).parent().parent().find('.vote_count').html('<%= escape_javascript @post.votes_for.size.to_s %>');
-   $(this).closest('.like_post').hide();
+$('.like_post').bind('ajax:success', function(){
+   $(this).parent().parent().find('#like-counts').html('<%= escape_javascript @post.get_upvotes.size.to_s %>');
+   $(this).child().find('i').removeClass('<%= escape_javascript outline %>')
 });
