@@ -6,6 +6,18 @@
 
   <!-- <div class="ui four bottom attached buttons"> -->
 
+  <div class="content">
+    <a href="" class="author"></a>
+  </div>
+  <%= image_tag(@post.user.avatar, class: "ui avatar image") %>
+  <%= @post.user.name %>
+
+  <span class="date">
+    <%= time_ago_in_words(@post.created_at) %> ago
+  </span>
+
+
+
 
     <div class="ui labeled button" tabindex="0">
       <div class="ui olive fluid button">
@@ -23,10 +35,7 @@
       </a>
     </div>
 
-    <button id="imgur" class="ui olive basic button">
-      <i class="send outline icon"></i>
-      To Imgur
-    </button>
+
 
     <%= link_to "Create One", new_post_path, class: 'ui olive basic button' %>
 
