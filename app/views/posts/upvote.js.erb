@@ -1,0 +1,4 @@
+$('.like_post').bind('ajax:success', function(){
+   $(this).parent().parent().find('#like-counts').html('<%= escape_javascript @post.get_upvotes.size.to_s %>');
+   $(this).child().find('i').removeClass('<%= escape_javascript outline %>')
+});
