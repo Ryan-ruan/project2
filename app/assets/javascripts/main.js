@@ -441,33 +441,12 @@ $(document).ready(function(){
 
   } // main.js will only execute on posts/new page
 
-  // =================================================================
-  // following code runs when on posts#show page (posts/:id), for like button
+  if ( $('body.session.root').length ){
+    $('nav').css('visibility', 'hidden');
 
-
-
-  if( $('body.posts.show').length ){
-
-    console.log("We're on posts#show page(posts/:id)");
-
-
-    $.ajax({
-    url: 'https://api.imgur.com/3/image',
-    headers: {
-        'Authorization': 'Client-ID YOUR_CLIENT_ID'
-    },
-    type: 'POST',
-    data: {
-        'image': 'helloworld.jpg'
-    },
-    success: function() { console.log('cool'); }
-});
-
-
-
-
-
-  } // will only execute on posts/new page
+  } else {
+    $('nav').removeProp("visibility");
+  }
 
 
 

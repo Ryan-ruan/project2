@@ -1,6 +1,9 @@
-$('.like_post').bind('ajax:success', function(){
-  $('#like-counts').html('<%= escape_javascript @post.get_upvotes.size.to_s %>');
+console.log('haha');
 
+
+$('.like_post').on('ajax:success', function(e, data, status, xhr){
+  $(this).parent().parent().find('#like-counts').html('<%= escape_javascript @post.get_upvotes.size.to_s %>');
+  $(this).children().find('i').removeClass('<%= escape_javascript outline %>')
 });
 <% if @current_user.voted_for? @post %>
   $('#heart-icon').removeClass('outline');

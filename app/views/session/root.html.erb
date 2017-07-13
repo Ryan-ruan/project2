@@ -1,8 +1,24 @@
-<body>
 
-<div class="welcome">
-  <div class = "pikq">PikQ</div>
-  <div class = "intro">Unleash your Creativity</div>
+<div class="ui centered grid">
+  <div class="eight column wide">
+
+    <div id="welcome" class="ui two column middle aligned centered grid">
+      <div class="column">
+        <div class="welcome">
+          <div class = "pikq">PikQ</div>
+          <div class = "intro">Unleash your Creativity</div>
+        </div>
+      </div>
+      <div class="four column centered row">
+        <div class="ui large buttons">
+          <%= link_to 'Take a Snap', new_post_path, class: "ui teal huge basic button" %>
+          <div class="or"></div>
+          <%= link_to 'SignUp', new_user_path, class: "ui teal huge basic button" %>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
 </div>
-
-</body>

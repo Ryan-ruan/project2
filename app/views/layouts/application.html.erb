@@ -7,8 +7,6 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
 
 
   </head>
@@ -16,6 +14,8 @@
   <body class="<%= controller_name %> <%= action_name %>">
 
     <div class="" style="height:10px"></div>
+
+    <nav>
 
     <div class="ui container">
       <div class="ui secondary menu">
@@ -34,10 +34,10 @@
         </div>
       </div>
     </div>
+  </nav>
 
 
-
-      <%= yield %>
+    <%= yield %>
 
 
   </body>
