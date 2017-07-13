@@ -316,7 +316,7 @@ $(document).ready(function(){
 
 
     // switch between tabs
-    $('.menu .item').tab();
+    $('.tabular.menu .item').tab();
 
 
 
