@@ -7,43 +7,89 @@
   <!-- div wrapp the camera live preview -->
   <div class="ui segment">
     <canvas id="track-canvas" width="640" height="480"></canvas>
-    <div class="column" id="my_camera">
-    </div>
+    <div class="column" id="my_camera"></div>
   </div>
 
-  <div class="four column centered row">
-    <div id="pre_take_buttons">
-      <button class="ui teal button"><i class="photo icon"></i>Take Snapshot</button>
-    </div>
-
-    <div id="post_take_buttons" style="display:none">
-      <button class="ui red button" id="cancel"><i class="remove icon"></i>Cancel Preview</button>
-      <button class="ui blue button" id="save"><i class="save icon"></i>Save Photo</button>
-    </div>
 
 
-    <div>
+
+
+
+    <!-- <div>
       <button id="luke" class="ui teal button">Luke</button>
-    </div>
+    </div> -->
 
-    <div id="filters_button">
+    <!-- <div id="filters_button">
       <button class="ui orange basic button">Filters</button>
-    </div>
+    </div> -->
 
-    <div class="filters_buttons" style="display:none">
-      <button class="ui orange basic button" id ='Reset'>Reset</button>
-      <!-- <button class="ui orange basic button" id ='Blur'>Blur</button> -->
-      <button class="ui orange basic button" id = 'BnW'>BnW</button>
-      <button class="ui orange basic button" id ='Bright'>Bright</button>
-      <!-- <button class="ui orange basic button" id ='Hue'>Hue</button> -->
-      <button class="ui orange basic button" id ="Saturate">Saturate</button>
-      <button class="ui orange basic button" id='Sepia'>Sepia</button>
-      <button class="ui orange basic button" id='Contrast'>Contrast</button>
-    </div>
+    <!-- <div class="filters_buttons" style="display:none"> -->
+    <!-- <button class="ui orange basic button" id ='Reset'>Reset</button> -->
+    <!-- <button class="ui orange basic button" id ='Blur'>Blur</button> -->
+    <!-- <button class="ui orange basic button" id = 'BnW'>BnW</button> -->
+    <!-- <button class="ui orange basic button" id ='Bright'>Bright</button> -->
+    <!-- <button class="ui orange basic button" id ='Hue'>Hue</button> -->
+    <!-- <button class="ui orange basic button" id ="Saturate">Saturate</button> -->
+    <!-- <button class="ui orange basic button" id='Sepia'>Sepia</button>
+    <button class="ui orange basic button" id='Contrast'>Contrast</button>
+  </div> -->
+
+    <!-- <select class="ui selection dropdown" id="myFilter">
+      <option value="">Filter</option>
+      <option value="5" id="Reset">Reset</option>
+      <option value="4" id="BnW">Black and White</option>
+      <option value="3" id="Bright">Bright</option>
+      <option value="2" id="Saturate">Saturate</option>
+      <option value="1" id="Sepia">Sepia</option>
+      <option value="0" id="Contrast">Contrast</option>
+    </select> -->
 
 
-  </div>
 
+    <div class="four column centered row">
+      <div class="column">
+        <div id="pre_take_buttons">
+
+          <button id="snapshot" class="ui teal button"><i class="photo icon"></i>Take Snapshot</button>
+
+          <!-- Face group buttons -->
+          <div class="btn-group">
+            <button class="btn btn-primary">Faces</button>
+            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" data-placeholder="false"><span class="caret"></span></button>
+              <ul class="dropdown-menu noclose">
+                <li><input type="checkbox" id="asset" name="myAsset" value="1"><label for="asset">Asset</label></li>
+                <li><input type="checkbox" id="moustache" name="myMoustache" value="1"><label for="moustache">Moustache</label></li>
+                <li><input type="checkbox" id="cat" name="myCat" value="1"><label for="cat">Cat</label></li>
+                <li><input type="checkbox" id="luke" name="myLuke" value="5"><label for="luke">Luke</label></li>
+                <li><input type="checkbox" id="edge" name="myEdge" value="4"><label for="edge">Edge</label></li>
+                <li><input type="checkbox" id="olivia" name="myOlivia" value="3"><label for="olivia">Olivia</label></li>
+                <li><input type="checkbox" id="murray" name="myMurray" value="2"><label for="murray">Murray</label></li>
+                <li><input type="checkbox" id="cage" name="myCage" value="1"><label for="cage">Cage</label></li>
+              </ul>
+          </div>
+
+          <!-- Filter group buttons -->
+          <div class="btn-group">
+            <button class="btn btn-primary">Filters</button>
+            <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" data-placeholder="false"><span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><input type="checkbox" id="Reset" name="myReset" value="5"><label for="Reset">Reset</label></li>
+                <li><input type="checkbox" id="Bnw" name="myBnw" value="4"><label for="Bnw">Black and White</label></li>
+                <li><input type="checkbox" id="Bright" name="myBright" value="3"><label for="Bright">Bright</label></li>
+                <li><input type="checkbox" id="Saturate" name="mySaturate" value="2"><label for="Saturate">Saturate</label></li>
+                <li><input type="checkbox" id="Sepia" name="mySepia" value="1"><label for="Sepia">Sepia</label></li>
+                <li><input type="checkbox" id="Contrast" name="myContrast" value="1"><label for="Contrast">Contrast</label></li>
+              </ul>
+          </div>
+        </div>   <!-- pre_take_buttons above -->
+
+        <div id="post_take_buttons" style="display:none">
+          <button class="ui red button" id="cancel"><i class="remove icon"></i>Cancel Preview</button>
+          <button class="ui blue button" id="save"><i class="save icon"></i>Save Photo</button>
+        </div>   <!-- post_take_buttons above -->
+      </div>
+
+    </div>   <!-- Whole row -->
 
 </div>
 <!-- closing #webcamjs -->

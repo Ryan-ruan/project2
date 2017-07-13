@@ -2,35 +2,37 @@
   <div class="column">
     <div class="ui raised container segment">
       <%= form_for @user,html:{multipart:true, class: 'ui form'} do |f| %>
-      <div class="field">
+      <div class="required field">
         <%= f.label :email %>
         <%= f.email_field :email %>
       </div>
 
-      <div class="field">
+      <div class="required field">
         <%= f.label :password %>
         <%= f.password_field :password %>
       </div>
 
-      <div class="field">
+      <div class="required field">
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation %>
       </div>
 
-      <div class="field">
+      <div class="required field">
         <%= f.label :name %>
         <%= f.text_field :name %>
       </div>
 
       <div class="field">
         <%= f.label :avatar %>
-        <%= f.cl_image_upload :avatar %>
+        <%= f.cl_image_upload :avatar, :id => 'upload' %>
       </div>
 
       <button class="ui olive labeled icon button">
         Create New Account
         <i class="add icon"></i>
       </button>
+
+      <div id="upload-demo"></div>
 
       <% end %>
     </div>

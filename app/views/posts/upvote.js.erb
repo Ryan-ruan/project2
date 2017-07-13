@@ -5,3 +5,8 @@ $('.like_post').on('ajax:success', function(e, data, status, xhr){
   $(this).parent().parent().find('#like-counts').html('<%= escape_javascript @post.get_upvotes.size.to_s %>');
   $('#heart-icon').removeClass("outline")
 });
+<% if @current_user.voted_for? @post %>
+  $('#heart-icon').removeClass('outline');
+<% else %>
+  $('#heart-icon').addClass('outline');
+<% end %>

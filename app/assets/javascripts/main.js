@@ -158,21 +158,21 @@ $(document).ready(function(){
       $elem.css('filter', css_val);
     }
 
-    var resetFilters = function(){
-      $('.filters_buttons').children().addClass("basic");
-      $('#my_camera').css('filter','');
-    };
-
-    var hideFilters = function () {
-      $('#filters_button').show();
-      $('.filters_buttons').hide();
-    };
-
-    // toggle filter options buttons
-    $('#filters_button button').on('click', function(){
-      $('#filters_button').hide();
-      $('.filters_buttons').show();
-    });
+    // var resetFilters = function(){
+    //   $('.filters_buttons').children().addClass("basic");
+    //   $('#my_camera').css('filter','');
+    // };
+    //
+    // var hideFilters = function () {
+    //   $('#filters_button').show();
+    //   $('.filters_buttons').hide();
+    // };
+    //
+    // // toggle filter options buttons
+    // $('#filters_button button').on('click', function(){
+    //   $('#filters_button').hide();
+    //   $('.filters_buttons').show();
+    // });
 
     // reset all the filters in preview
     $('#Reset').on('click', function(){
@@ -193,7 +193,8 @@ $(document).ready(function(){
     // });
     //
 
-    $('#BnW').on('click', function(){
+
+    $('#Bnw').on('click', function(){
       $(this).toggleClass(unselectedClass);
       console.log(this);
       if( $(this).hasClass(unselectedClass) ){
@@ -205,6 +206,17 @@ $(document).ready(function(){
       applyFilters(filters, "#my_camera");
     });
 
+    // $('#BnW').on('click', function(){
+    //   $(this).toggleClass(unselectedClass);
+    //   console.log(this);
+    //   if( $(this).hasClass(unselectedClass) ){
+    //     filters.grayscale = '0%';
+    //   } else {
+    //     filters.grayscale = "100%";
+    //   }
+    //   console.log(filters);
+    //   applyFilters(filters, "#my_camera");
+    // });
 
     $('#Bright').on('click', function(){
       $(this).toggleClass(unselectedClass);
@@ -227,7 +239,7 @@ $(document).ready(function(){
     // });
 
 
-    $('#Saturate').on('click', function(){
+    $('#Saturate').on('change', function(){
       $(this).toggleClass(unselectedClass);
       if( $(this).hasClass(unselectedClass) ){
         filters.saturate = '100%';
@@ -268,7 +280,7 @@ $(document).ready(function(){
 
     // ======== buttons for camera view ============
 
-    $('#pre_take_buttons button').on('click', function(){
+    $('#snapshot').on('click', function(){
       // freeze camera so user can preview pic
   		Webcam.freeze();
 
