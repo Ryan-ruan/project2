@@ -19,7 +19,7 @@
 
 
   <div class="ui labeled button" tabindex="0">
-    <div class="ui olive fluid button">
+    <div class="ui purple fluid button">
       <%= link_to like_post_path(@post), method: :get, remote: true, class: 'like_post' do %>
         <% if @current_user.present? %>
           <% if  @current_user.voted_for? @post %>
@@ -33,7 +33,7 @@
       <% end %>
     </div>
 
-    <a id="like-counts" class="ui basic olive left pointing label">
+    <a id="like-counts" class="ui basic purple left pointing label">
       <%= @post.get_upvotes.size %>
     </a>
   </div>
@@ -53,7 +53,7 @@
   <%= render @post.comments %>
 </div>
 
-<div class="ui olive container segment">
+<div class="ui purple container segment">
   <h4>Add a Comment:</h4>
   <%= render 'comments/form' %>
 </div>
