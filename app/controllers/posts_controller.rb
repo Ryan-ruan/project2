@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :redirect_to_https, only: :new
   before_action :check_if_logged_in, only: [:new, :create, :destroy]
-  before_action :find_post, only: [:show, :destroy, :like]
+  before_action :find_post, only: [:show, :destroy, :upvote]
 
   def new
     @post = Post.new

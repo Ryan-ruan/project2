@@ -16,6 +16,4 @@
 //= require fabric
 //= require semantic-ui
 //= require tracking
-//= require underscore
-//= require backbone
 //= require_tree .

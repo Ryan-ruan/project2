@@ -25,3 +25,18 @@ video{
   z-index: 0 !important;
   // position: absolute !important;
 }
+
+
+h1{
+  color: white;
+}
+
+.extra a:not(.ui){
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.right.floated.meta{
+  float: right;
+  color: rgba(0, 0, 0, 0.4);
+
+}

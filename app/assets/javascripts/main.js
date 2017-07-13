@@ -1,13 +1,13 @@
 var canvas;
+
 $(document).ready(function(){
   console.log("all good");
 
+  // initialize dropdown for semantic-ui
+  $('.ui.dropdown').dropdown();
 
   if( $('body.posts.new').length ){
 
-    // initialize the canvas, get the context as '2d'
-    // var $canvas = $('#my_canvas');
-    // var myContext = $canvas[0].getContext('2d');
 
     // set up the camera.
     Webcam.set({
@@ -28,12 +28,31 @@ $(document).ready(function(){
     // Need to set an ID for the video element for trackingjs
     $('video').attr('id', 'webcam_video');
 
-    // var $testcanvas = $('<canvas id="track-canvas" width="640" height="480">');
-    // $( '#my_camera' ).prepend($testcanvas);
 
     var trackCanvas = document.getElementById('track-canvas');
-    console.log('canvas:', trackCanvas);
+    console.log('trackingjs canvas:', trackCanvas);
     var context = trackCanvas.getContext('2d');
+
+    var isTracking = false;
+
+    $('#facewap').on('click', function(){
+      console.log('haha');
+      $(this).toggleClass('basic');
+      isTracking = !isTracking;
+      trackOrNot();
+
+    });
+
+    var trackOrNot = function(){
+      if ( isTracking ) {
+        trackerTask.run();
+      } else {
+        trackerTask.stop();
+        context.clearRect(0, 0, trackCanvas.width, trackCanvas.height);
+      }
+    };
+
+    var facewapImg; /// value getting from dropdown selection
 
 
     ///////////// start tracking code
@@ -42,29 +61,34 @@ $(document).ready(function(){
     img.src = '/assets/edge.png';
     console.log(img.src);
 
+    var tracker = new tracking.ObjectTracker('face');
+    tracker.setInitialScale(4);
+    tracker.setStepSize(0.5);
+    tracker.setEdgesDensity(0.1);
+    var trackerTask = tracking.track('#webcam_video', tracker, { camera: true });
+    trackerTask.stop();
+
+    tracker.on('track', function(event) {
+      context.clearRect(0, 0, trackCanvas.width, trackCanvas.height);
+      event.data.forEach(function(rect) {
+        //  context.strokeStyle = '#a64ceb';
+        //  context.strokeRect(trackCanvas.width - rect.x - rect.width, rect.y, rect.width, rect.height);
+        //  context.font = '11px Helvetica';
+        //  context.fillStyle = "#fff";
+        //  context.fillText('x: ' + (trackCanvas.width - rect.x - rect.width) + 'px', rect.x + rect.width + 5, rect.y + 11);
+        //  context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+
+        //-------- for luke.png test
+        context.drawImage(img, trackCanvas.width - rect.x - rect.width - 10, rect.y, rect.width * 1.2, rect.height * 1.2);
+        //--------- for cat.png test
+        // context.drawImage(img, trackCanvas.width - rect.x - rect.width - 60, rect.y-50, rect.width * 1.8, rect.height * 2.0);
+      });
+    });
 
 
-      var tracker = new tracking.ObjectTracker('face');
-       tracker.setInitialScale(4);
-       tracker.setStepSize(0.5);
-       tracker.setEdgesDensity(0.1);
-       tracking.track('#webcam_video', tracker, { camera: true });
-       tracker.on('track', function(event) {
-         context.clearRect(0, 0, trackCanvas.width, trackCanvas.height);
-         event.data.forEach(function(rect) {
-          //  context.strokeStyle = '#a64ceb';
-          //  context.strokeRect(trackCanvas.width - rect.x - rect.width, rect.y, rect.width, rect.height);
-          //  context.font = '11px Helvetica';
-          //  context.fillStyle = "#fff";
-          //  context.fillText('x: ' + (trackCanvas.width - rect.x - rect.width) + 'px', rect.x + rect.width + 5, rect.y + 11);
-          //  context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
 
-          //-------- for luke.png test
-          context.drawImage(img, trackCanvas.width - rect.x - rect.width - 10, rect.y, rect.width * 1.2, rect.height * 1.2);
-          //--------- for cat.png test
-          // context.drawImage(img, trackCanvas.width - rect.x - rect.width - 60, rect.y-50, rect.width * 1.8, rect.height * 2.0);
-         });
-       });
+
+
 
 
 
@@ -73,10 +97,10 @@ $(document).ready(function(){
 
     ////////////////////// end tracking code
 
+    // fabric js canvas
     canvas = this.__canvas = new fabric.Canvas('my_canvas', {
       width: 640,
       height: 480,
-
     });
 
     // define a function to save the sanpshot onto a canvas we placed on html page
@@ -182,17 +206,6 @@ $(document).ready(function(){
 
     // click buttons to apply css filters in live preview
 
-    // $('#Blur').on('click', function(){
-    //   $(this).toggleClass(unselectedClass);
-    //   if( $(this).hasClass(unselectedClass) ){
-    //     filters.blur ='0';
-    //   } else {
-    //     filters.blur = "3px";  // {css: '3px', fabric: '100'}
-    //   }
-    //   applyFilters(filters, "#my_camera");
-    // });
-    //
-
 
     $('#Bnw').on('click', function(){
       $(this).toggleClass(unselectedClass);
@@ -206,18 +219,6 @@ $(document).ready(function(){
       applyFilters(filters, "#my_camera");
     });
 
-    // $('#BnW').on('click', function(){
-    //   $(this).toggleClass(unselectedClass);
-    //   console.log(this);
-    //   if( $(this).hasClass(unselectedClass) ){
-    //     filters.grayscale = '0%';
-    //   } else {
-    //     filters.grayscale = "100%";
-    //   }
-    //   console.log(filters);
-    //   applyFilters(filters, "#my_camera");
-    // });
-
     $('#Bright').on('click', function(){
       $(this).toggleClass(unselectedClass);
       if( $(this).hasClass(unselectedClass) ){
@@ -228,17 +229,6 @@ $(document).ready(function(){
       applyFilters(filters, "#my_camera");
     });
 
-    // $('#Hue').on('click', function(){
-    //   $(this).toggleClass(unselectedClass);
-    //   if( $(this).hasClass(unselectedClass) ){
-    //     filters["hue-rotate"] = '0deg';
-    //   } else {
-    //     filters["hue-rotate"] = "180deg";
-    //   }
-    //   applyFilters(filters, "#my_camera");
-    // });
-
-
     $('#Saturate').on('change', function(){
       $(this).toggleClass(unselectedClass);
       if( $(this).hasClass(unselectedClass) ){
@@ -248,6 +238,7 @@ $(document).ready(function(){
       }
       applyFilters(filters, "#my_camera");
     });
+
 
     $('#Sepia').on('click', function(){
       $(this).toggleClass(unselectedClass);
@@ -274,10 +265,6 @@ $(document).ready(function(){
 
 
 
-
-
-
-
     // ======== buttons for camera view ============
 
     $('#snapshot').on('click', function(){
@@ -287,36 +274,50 @@ $(document).ready(function(){
       // swap button sets
       $('#pre_take_buttons').hide();
       $('#post_take_buttons').show();
+      trackerTask.stop();
     });
 
     $('#cancel').on('click', function() {
       // cancel preview freeze and return to live camera feed
   		Webcam.unfreeze();
-      resetFilters();
-      hideFilters();
-
-
-  		// swap buttons back
+      // resetFilters();
+      // hideFilters();
+      trackOrNot();
+  		// swap button sets
       $('#pre_take_buttons').show();
       $('#post_take_buttons').hide();
     });
 
 
+      // save track canvas
+
+    var saveTrackCanvas = function(){
+      var dataurl = trackCanvas.toDataURL('image/png');
+      fabric.Image.fromURL(dataurl, function(oImg) {
+        oImg.set({selectable:false});
+        canvas.add(oImg);
+      }, { crossOrigin: 'Anonymous' });
+    };
+
+
+
     $('#save').on('click',function() {
       // take_snapshot();
       take_snap_canvas();
+      saveTrackCanvas();
 
       $('#pre_take_buttons').show();
       $('#post_take_buttons').hide();
       $('#webcamjs').hide();
       Webcam.reset();
+
       $('#editor_ui').show();
 
     });
 
 
     // switch between tabs
-    $('.menu .item').tab();
+    $('.tabular.menu .item').tab();
 
 
 
@@ -427,8 +428,10 @@ $(document).ready(function(){
       $('#pre_take_buttons').show();
       $('#post_take_buttons').hide();
       $('#editor_ui').hide();
-      resetFilters();
-      hideFilters();
+      // resetFilters();
+      // hideFilters();
+      trackOrNot();
+
     });
 
     //======================Save to computer ==========================
@@ -453,12 +456,8 @@ $(document).ready(function(){
 
   } // main.js will only execute on posts/new page
 
-  if ( $('body.session.root').length ){
-    $('nav').css('visibility', 'hidden');
 
-  } else {
-    $('nav').removeProp("visibility");
-  }
+  // hide nav bar on root page
 
 
 
