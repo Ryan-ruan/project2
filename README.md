@@ -21,6 +21,8 @@ Ruby
 * Ruby on Rails - wireframe upon which the website is built
 * [acts_as_votable](https://github.com/ryanto/acts_as_votable) - Ruby Gem used for the upvotes ("Like") of the posts
 
+AJAX - enables the user to see the updated number of votes ("Likes") without reloading the page
+
 JS Libraries
 * [fabric js](http://fabricjs.com/) - allows users to edit images by changing and adding stickers, drawings and texts to it
 * [webcam js](https://github.com/jhuckaby/webcamjs) - enables PikQ to obtain data from the users' webcams and take pictures
@@ -44,20 +46,26 @@ Cloud Platforms
 ## Result
 Here is [our live site](https://pikq.herokuapp.com)
 
-![pikQ](.png)
+![pikQ](app/assets/images/screenshot.png)
 
 ## Lessons Learned
 
 * The most useful important learned in working in groups is that conflicts will inevitably arise so resolving these quickly saves time which can be devoted to completing tasks.
 
-* Planning from the beginning by listing and delegating tasks helps keep the team on track.
+* Planning from the beginning by listing and delegating tasks helps keep the team on track. In our group, we used [teambition](https://www.teambition.com/) to keep track of the tasks progress and share resources useful to accomplish the tasks.
 
 * Never be afraid to explore other applications to give the website the best user experience.
 
 
-
 ## Wish List
 
+The website would have provided better user experience if the following features were incorporated which would have allowed users to:
+
+* Crop and resize the uploaded image
+* Upload stickers they wish to add and choose fonts for the text editor
+* Comment on other user's comments using the nested commenting system
+* Add tags
+* Use search function
 
 
 ## Acknowledgments
