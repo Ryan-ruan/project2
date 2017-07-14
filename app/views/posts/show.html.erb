@@ -39,7 +39,13 @@
   </div>
 
 
+
   <% if @current_user == @post.user %>
+    <button id="imgur" class="ui purple basic button">
+      <i class="send outline icon"></i>
+        To Imgur
+    </button>
+
     <%= link_to "Delete", post_path(@post), method: :delete, data:{confirm: 'Are you sure?'}, class:'ui negative right floated small basic button' %>
   <% end %>
 
@@ -58,4 +64,17 @@
   <%= render 'comments/form' %>
 </div>
 
+
+<!-- modal for imgur -->
+<div class="ui tiny modal">
+  <div class="header">Imgur!</div>
+  <div class="content">
+    <h3>Your image is now on imgur:  <span><a href=""></a></span></h3>
+  </div>
+  <div class="actions">
+    <button class="ui small purple basic button">Cool!</button>
+  </div>
+</div>
+
+<!-- addthis plugin -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5965f36bf26d0d08"></script>

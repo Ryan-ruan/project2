@@ -11,20 +11,9 @@ $(document).ready(function() {
       ;
     });
 
-    $('#upload').on('click', function() {
-      $uploadCrop = $('#upload-demo').croppie({
-        enableExif: true,
-        viewport: {
-            width: 200,
-            height: 200,
-            type: 'circle'
-        },
-        boundary: {
-            width: 300,
-            height: 300
-        }
-      });
+    $('#feedback').on('click', function() {
+      $('.ui.modal.feedback')
+        .modal('show');
     });
-
 
 }); // end of document ready

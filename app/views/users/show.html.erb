@@ -1,35 +1,28 @@
 
-<div class="ui grid container">
-  <div class="one column"></div>
-  <div class="five wide column">
+<div class="ui grid">
+  <div class="three wide column">
     <div class="ui right floated small rounded image">
-      <%= link_to cl_image_tag(@user.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true)%>
-    </div>
-  </div>
-  <div class="ten wide column">
-    <div class="ui compact segment">
-      <div class="ui header">
-        <h2>Name: <%= @user.name %> </h2>
-        <h4>Email: <%= @user.email %> </h4>
+      <%= link_to cl_image_tag(@user.avatar, :width=>300, :height=>400, :crop=>"crop", :gravity=>"face", :secure=>true)%>
+      <div class="ui compact segment">
+        <div class="ui header">
+          <h2> <%= @user.name %> </h2>
+          <h4> <%= @user.email %> </h4>
+        </div>
+        <% if @current_user == @user %>
+        <%= link_to 'Edit Profile', edit_user_path(@user), class: 'ui button' %>
+        <% end %>
       </div>
-      <% if @current_user == @user %>
-      <%= link_to 'Edit Profile', edit_user_path(@user), class: 'ui button' %>
-      <%= link_to 'Start Drawing', new_post_path, class: 'ui button' %>
-      <% end %>
     </div>
   </div>
-</div>
-
-
-<div class="ui relaxed stackable grid container">
-  <div class="doubling four column row">
-    <% @user.posts.each do |p| %>
+  <div class="twelve wide column">
+    <div class="ui three column grid">
+      <% @user.posts.each do |p| %>
       <div class="column">
 
         <div class="ui centered card">
 
           <div class="extra content">
-            <div class="right floated meta">14h</div>
+            <div class="right floated meta"><%= time_ago_in_words(p.created_at) %></div>
             <%= link_to cl_image_tag(p.user.avatar, :width=>300, :height=>300, :crop=>"crop", :gravity=>"face", :secure=>true), user_path(p.user), class: "ui avatar image"%> <%= link_to p.user.name, user_path(p.user) %>
           </div>
 
@@ -40,11 +33,11 @@
           <div class="content">
             <span class="right floated">
               <i class="heart outline like icon"></i>
-              17 likes
+              <%= p.get_upvotes.size %> likes
             </span>
 
             <i class="comment icon"></i>
-            3 comments
+            <%= pluralize(p.comments.count, "Comment") %>
           </div>
 
         </div>
@@ -52,6 +45,7 @@
         <div class="ui container"></div>
 
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
