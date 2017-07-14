@@ -117,57 +117,46 @@ $(document).ready(function(){
     // define a function to save the sanpshot onto a canvas we placed on html page
     function take_snap_canvas(){
       Webcam.snap( function(data_uri){
-        canvas.setBackgroundImage(data_uri, canvas.renderAll.bind(canvas));
+        canvas.setBackgroundImage(data_uri, function(){
+          applyFabricFilters();
+          canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
+        });
       });
-
-      // applyFabricFilters();
-      // canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
-
     }
+
 
     var applyFabricFilters = function(){
       if (filters.grayscale) {
-
         var filter = new fabric.Image.filters.Grayscale({
-          grayscale: 500
+          grayscale: 100
         });
-
         canvas.backgroundImage.filters.push(filter);
-        // canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
       }
 
       if (filters.brightness) {
-
         var filter = new fabric.Image.filters.Brightness({
-          brightness: 300
+          brightness: 80
         });
         canvas.backgroundImage.filters.push(filter);
-        // canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
       }
 
       if (filters.saturate) {
-
         var filter = new fabric.Image.filters.Saturate({
-          saturate: 300
+          saturate: 100
         });
         canvas.backgroundImage.filters.push(filter);
-        // canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
       }
 
       if (filters.sepia) {
-
         var filter = new fabric.Image.filters.Sepia();
         canvas.backgroundImage.filters.push(filter);
-        // canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
       }
 
       if (filters.contrast) {
-
         var filter = new fabric.Image.filters.Contrast({
           contrast: 100
         });
         canvas.backgroundImage.filters.push(filter);
-        // canvas.backgroundImage.applyFilters(canvas.renderAll.bind(canvas));
       }
     }
 
@@ -218,7 +207,7 @@ $(document).ready(function(){
     // click buttons to apply css filters in live preview
 
 
-    $('#Bnw').on('click', function(){
+    $('#BnW').on('click', function(){
       $(this).toggleClass(unselectedClass);
       console.log(this);
       if( $(this).hasClass(unselectedClass) ){
