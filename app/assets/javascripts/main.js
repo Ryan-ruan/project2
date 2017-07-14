@@ -44,8 +44,8 @@ $(document).ready(function(){
       $(this).toggleClass('basic');
       isTracking = !isTracking;
       trackOrNot();
-
     });
+
 
     var trackOrNot = function(){
       if ( isTracking ) {
@@ -56,14 +56,19 @@ $(document).ready(function(){
       }
     };
 
-    var facewapImg; /// value getting from dropdown selection
 
 
     ///////////// start tracking code
     var img = document.createElement('img');
     // img.src = '/assets/cat.png';
-    img.src = '/assets/edge.png';
-    console.log(img.src);
+
+    /// value getting from dropdown selection
+    $('.ui.radio.checkbox input').on('click', function(){
+      var imgURL = $(this).parent().find('img').attr('src');
+      console.log(imgURL);
+      img.src = imgURL;
+
+    });
 
     var tracker = new tracking.ObjectTracker('face');
     tracker.setInitialScale(4);
