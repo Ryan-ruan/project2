@@ -4,7 +4,7 @@
 
 
 $(document).ready(function(){
-  $("textarea").keyup(function(){
+  $('textarea[name="comments"]').keyup(function(){
     el = $(this);
     if(el.val().length < 5){
       $('#reply-post').addClass('disabled');
