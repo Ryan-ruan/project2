@@ -469,7 +469,6 @@ $(document).ready(function(){
   } // main.js will only execute on posts/new page
 
 
-  // hide nav bar on root page
 
 
 
