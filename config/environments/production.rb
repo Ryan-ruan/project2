@@ -1,6 +1,11 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # set serve static assets to true, so assets images can be accessed when deployed on heroku
+  # ======== Lingxiao Jul 14, 2017 ================
+  config.serve_static_assets = true
+
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

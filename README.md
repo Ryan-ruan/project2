@@ -6,10 +6,10 @@
 
 Developing websites involves working in groups where its members have different ideas, tasks delegated, and versions of have to be controlled and reconciled when using the GitHub. The purpose of the project is to make and develop a website in a group. Our group is comprised of:
 
-1. Weijia Li
-2. Lingxiao Wang
-3. Ryan Ruan
-4. Jonathan See
+1. [Weijia Li](https://github.com/unicar9)
+2. [Lingxiao Wang](https://github.com/douMax)
+3. [Ryan Ruan](https://github.com/Ryan-ruan)
+4. [Jonathan See](https://github.com/jonathansee2013)
 
 ## Features
 
@@ -36,7 +36,7 @@ API
 
 CSS Framework
 * [Semantic-UI](https://semantic-ui.com/) - responsible for creating a clean and presentable website
-* [Colorzilla](http://www.colorzilla.com/gradient-editor/)responsible for the purple gradient background appearing throughout the website
+* [Colorzilla](http://www.colorzilla.com/gradient-editor/) - responsible for the purple gradient background appearing throughout the website
 
 Cloud Platforms
 * [Cloudinary](http://cloudinary.com/) - responsible for storing all the images saved in PikQ
@@ -46,7 +46,11 @@ Cloud Platforms
 ## Result
 Here is [our live site](https://pikq.herokuapp.com)
 
-![pikQ](app/assets/images/screenshot.png)
+Welcome Page
+![pikQ](app/assets/images/screenshot1.png)
+![pikQ](app/assets/images/screenshot2.png)
+![pikQ](app/assets/images/screenshot3.png)
+
 
 ## Lessons Learned
 
@@ -75,3 +79,4 @@ We would like to thank Luke Hammer for leading us to the right direction by intr
 Lastly proper acknowledgments goes to the following:
 * [freepik](http://www.freepik.com/) - source of the sticker used in the editor function of PikQ
 * [I Hate Tomatoes](https://ihatetomatoes.net/how-to-create-css-glitch-effect/) - tutorial on how to create a CSS glitch effect on PikQ when hovered on the welcome page
+* [Adorable Avatars](http://avatars.adorable.io/) - collection of avatars for users who choose not to upload their face photos in their user profile
