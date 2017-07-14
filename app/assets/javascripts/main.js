@@ -199,9 +199,9 @@ $(document).ready(function(){
     // });
 
     // reset all the filters in preview
-    $('#Reset').on('click', function(){
-      resetFilters();
-    });
+    // $('#Reset').on('click', function(){
+    //   resetFilters();
+    // });
 
 
     // click buttons to apply css filters in live preview
@@ -280,8 +280,7 @@ $(document).ready(function(){
     $('#cancel').on('click', function() {
       // cancel preview freeze and return to live camera feed
   		Webcam.unfreeze();
-      // resetFilters();
-      // hideFilters();
+  
       trackOrNot();
   		// swap button sets
       $('#pre_take_buttons').show();
