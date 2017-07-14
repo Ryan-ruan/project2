@@ -460,7 +460,7 @@ $(document).ready(function(){
     //======================Save to computer ==========================
 
     $('#download').click(function() {
-      window.location = canvas.toDataURL("image/png");
+      window.open(canvas.toDataURL("image/png"))
     }); // save the image to computer
 
     //======================Upload to gallery ==========================
