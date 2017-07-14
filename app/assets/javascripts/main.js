@@ -41,16 +41,18 @@ $(document).ready(function(){
 
     $('#facewarp').on('click', function(){
       console.log('haha');
-      $(this).toggleClass('basic');
       isTracking = !isTracking;
       trackOrNot();
     });
 
 
     var trackOrNot = function(){
+      console.log(isTracking);
       if ( isTracking ) {
+        $('#facewarp').removeClass('basic');
         trackerTask.run();
       } else {
+        $('#facewarp').addClass('basic');
         trackerTask.stop();
         context.clearRect(0, 0, trackCanvas.width, trackCanvas.height);
       }
@@ -321,6 +323,8 @@ $(document).ready(function(){
       Webcam.reset();
 
       $('#editor_ui').show();
+      context.clearRect(0, 0, trackCanvas.width, trackCanvas.height);
+      isTracking = !isTracking;
 
     });
 
@@ -429,17 +433,27 @@ $(document).ready(function(){
 
     // brings back the webcam
     $('#camera').on('click', function(){
-      canvas.forEachObject(function(obj){
-        canvas.remove(obj);
-      });
-      Webcam.attach( '#my_camera' );
-      $('#webcamjs').show();
-      $('#pre_take_buttons').show();
-      $('#post_take_buttons').hide();
-      $('#editor_ui').hide();
-      // resetFilters();
-      // hideFilters();
-      trackOrNot();
+      location.reload();
+      // canvas.forEachObject(function(obj){
+      //   canvas.remove(obj);
+      // });
+      // Webcam.attach( '#my_camera' );
+      // $('#webcamjs').show();
+      // $('#pre_take_buttons').show();
+      // $('#post_take_buttons').hide();
+      // $('#editor_ui').hide();
+      // // resetFilters();
+      // // hideFilters();
+      // // trackOrNot();
+      // // context.clearRect(0, 0, trackCanvas.width, trackCanvas.height);
+      // $('video').attr('id', 'webcam_video');
+      // tracker = new tracking.ObjectTracker('face');
+      // tracker.setInitialScale(4);
+      // tracker.setStepSize(0.5);
+      // tracker.setEdgesDensity(0.1);
+      // trackerTask = tracking.track('#webcam_video', tracker, { camera: true });
+      // trackerTask.run();
+
 
     });
 
