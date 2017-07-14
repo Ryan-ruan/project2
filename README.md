@@ -1,57 +1,69 @@
 # README
 
-The Project will be deployed on the heroku - Lingxiao
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-# README
-
-# Project 2
+# Project 2 - PikQ
 
 ## Description
 
-Developing websites often involves working in groups where its members have different ideas and discrepancies from conflicts in varying versions of the tasks have to be reconciled when using the GitHub. Hence the aim of the project is to required to be completed in groups. 
+Developing websites involves working in groups where its members have different ideas, tasks delegated, and versions of have to be controlled and reconciled when using the GitHub. The purpose of the project is to make and develop a website in a group. Our group is comprised of:
+
+1. Weijia Li
+2. Lingxiao Wang
+3. Ryan Ruan
+4. Jonathan See
 
 ## Features
 
-The website features a log in for existing users and sign up for those seeking to access the website. Landlords can put up their property for rent and tenants can use leave reviews of the property. All these are shown on the browser. Users can also edit and delete their listings and reviews.
+PikQ is a website developed to allow users to take pictures from their webcams. These pictures can be edited and posted to their profiles which in turn appear in the gallery. Users can also comment on and "Like" posts from other users.
+
+The group utilized the following applications to achieve a functional yet visually appealing website:
+
+Ruby
+* Ruby on Rails - wireframe upon which the website is built
+* [acts_as_votable](https://github.com/ryanto/acts_as_votable) - Ruby Gem used for the upvotes ("Like") of the posts
+
+JS Libraries
+* [fabric js](http://fabricjs.com/) - allows users to edit images by changing and adding stickers, drawings and texts to it
+* [webcam js](https://github.com/jhuckaby/webcamjs) - enables PikQ to obtain data from the users' webcams and take pictures
+* [tracking js](https://trackingjs.com/) - detects users' faces as they move which in turn can be superimposed by another image (e.g. other people's faces)
+
+Plugin
+* [AddThis](http://www.addthis.com/) - allows users to share their edited images to social media sites such as Facebook, Pinterest, Weibo and Yummly.
+
+API
+* [imgurAPI](https://apidocs.imgur.com/) - allows users to upload their edited images unto imgur anonymously
+
+CSS Framework
+* [Semantic-UI](https://semantic-ui.com/) - responsible for creating a clean and presentable website
+* [Colorzilla](http://www.colorzilla.com/gradient-editor/)responsible for the purple gradient background appearing throughout the website
+
+Cloud Platforms
+* [Cloudinary](http://cloudinary.com/) - responsible for storing all the images saved in PikQ
+* [Heroku](https://www.heroku.com/) - where PikQ is deployed
+
 
 ## Result
-Here is [my live site](https://pikq.herokuapp.com)
+Here is [our live site](https://pikq.herokuapp.com)
 
 ![pikQ](.png)
 
 ## Lessons Learned
 
-I should have kept my ideas simple so that I can meet the necessary deliverables of the project and add more features to it if there was time left.
+* The most useful important learned in working in groups is that conflicts will inevitably arise so resolving these quickly saves time which can be devoted to completing tasks.
 
-Planning a wireframe of how the website should appear is essential so that if things do not go according to plan, the wireframe will serve as the reminder of the original plan.
+* Planning from the beginning by listing and delegating tasks helps keep the team on track.
+
+* Never be afraid to explore other applications to give the website the best user experience.
+
+
 
 ## Wish List
 
-I would have wanted to make the website more presentable as it is still in its rudimentary stage. Other features such as search, google maps and geotagging would have made the site more useful.
+
 
 ## Acknowledgments
 
-I would like to thank Luke Hammer first and foremost for being patient and guiding me in this project without radically changing my codes. Also a message of thanks to Matty for answering all my queries. Finally thank you to Lingxiao and Weijia for taking time to help me debug my website.
+We would like to thank Luke Hammer for leading us to the right direction by introducing us to webcamjs, trackingjs and AddThis and helping us fix the bugs in our face detection feature. We also would like to thank Matthew Edge-Williams for answering our queries and assisting us with the Github-related problems.
+
+Lastly proper acknowledgments goes to the following:
+* [freepik](http://www.freepik.com/) - source of the sticker used in the editor function of PikQ
+* [I Hate Tomatoes](https://ihatetomatoes.net/how-to-create-css-glitch-effect/) - tutorial on how to create a CSS glitch effect on PikQ when hovered on the welcome page
