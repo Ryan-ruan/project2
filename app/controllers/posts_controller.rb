@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-
+    @posts.order! 'created_at DESC'
     respond_to do |format|
       format.html {}
       format.json {  render json: @posts }

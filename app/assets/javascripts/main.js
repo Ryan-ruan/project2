@@ -39,20 +39,23 @@ $(document).ready(function(){
 
     var isTracking = false;
 
-    $('#facewarp').on('click', function(){
-      console.log('haha');
-      isTracking = !isTracking;
-      trackOrNot();
+    $('#facewarp').checkbox().first().checkbox({
+      onChecked: function(){
+        isTracking = true;
+        console.log("Toggled, isTracking:", isTracking);
+      },
+      onUnchecked: function(){
+        isTracking = false;
+        console.log("Toggled, isTracking:", isTracking);
+      }
     });
 
 
     var trackOrNot = function(){
       console.log(isTracking);
       if ( isTracking ) {
-        $('#facewarp').removeClass('basic');
         trackerTask.run();
       } else {
-        $('#facewarp').addClass('basic');
         trackerTask.stop();
         context.clearRect(0, 0, trackCanvas.width, trackCanvas.height);
       }
@@ -280,7 +283,7 @@ $(document).ready(function(){
     $('#cancel').on('click', function() {
       // cancel preview freeze and return to live camera feed
   		Webcam.unfreeze();
-  
+
       trackOrNot();
   		// swap button sets
       $('#pre_take_buttons').show();
