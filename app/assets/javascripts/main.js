@@ -39,20 +39,32 @@ $(document).ready(function(){
 
     var isTracking = false;
 
-    $('#facewarp').checkbox().first().checkbox({
+    $('#facetoggle').checkbox().first().checkbox({
       onChecked: function(){
         isTracking = true;
-        console.log("Toggled, isTracking:", isTracking);
+        console.log("Toggled");
+        trackOrNot();
+        $('#facetoggle span').text('On');
+
+        if(imgURL){
+          $('.ui.radio.checkbox img[src="' + imgURL + '"]').parent().parent().checkbox('check');
+        } else {
+          $('#luke').checkbox('check');
+        }
       },
       onUnchecked: function(){
         isTracking = false;
-        console.log("Toggled, isTracking:", isTracking);
+        console.log("Toggled");
+        trackOrNot();
+        $('.ui.radio.checkbox').checkbox('uncheck');
+        $('#facetoggle span').text('Off');
+
       }
     });
 
 
     var trackOrNot = function(){
-      console.log(isTracking);
+      console.log("isTracking:", isTracking);
       if ( isTracking ) {
         trackerTask.run();
       } else {
@@ -65,14 +77,15 @@ $(document).ready(function(){
 
     ///////////// start tracking code
     var img = document.createElement('img');
-    // img.src = '/assets/cat.png';
-
-    /// value getting from dropdown selection
-    $('.ui.radio.checkbox input').on('click', function(){
-      var imgURL = $(this).parent().find('img').attr('src');
-      console.log(imgURL);
-      img.src = imgURL;
-
+    var imgURL = '';
+    /// value getting from radio selection
+    $('.ui.radio.checkbox').checkbox({
+      onChecked: function(){
+        imgURL = $(this).parent().find('img').attr('src');
+        img.src = imgURL;
+        console.log('face selected', imgURL);
+        $('#facetoggle').checkbox('check')
+      }
     });
 
     var tracker = new tracking.ObjectTracker('face');
